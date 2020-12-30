@@ -1,5 +1,5 @@
-json-20201115 (nella cartella lib) è una libreria per la gestione del formato JSON in Java. è necessario importarla all'interno del progetto perchè gli oggetti e i metodi
-vengano riconosciuti.
+json-20201115 (nella cartella lib) è una libreria per la gestione del formato JSON in Java. La nuova libreria dovrebbe essere già nel classpath del progetto.
+Se così non fosse ecco un tutorial per aggiungerla.
 
 Breve tutorial per aggiunta di una libreria in formato jar:
 	1. Right click on your project.
