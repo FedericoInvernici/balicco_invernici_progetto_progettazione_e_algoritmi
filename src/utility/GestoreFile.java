@@ -4,6 +4,7 @@ import java.io.File;  //Classe per la gestione dei File
 import java.io.FileWriter; //Classe per la gestione della scrittura di stringhe nei File
 import java.io.IOException; //Eccezione per problemi di I/O
 
+
 public class GestoreFile {
 	
 	/*Metodo di prova per la creazione di un nuovo file JSON nella cartella "data"
