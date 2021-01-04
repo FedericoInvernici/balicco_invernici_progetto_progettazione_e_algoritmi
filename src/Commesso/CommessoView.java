@@ -16,11 +16,11 @@ public class CommessoView extends JFrame {
     private JButton    acquistaButton 	 = new JButton("Acquista gioco");
     private JButton    preordinaButton   = new JButton("Preordina gioco"); 
     private JButton    usatoButton    	 = new JButton("Ritira usato");
-	private CommessoModel ccontrol;
+	private CommessoModel cmodel;
     
 	public CommessoView (CommessoModel c)
 	{
-		ccontrol = c;
+		cmodel = c;
 		JPanel content = new JPanel();
 		content.setLayout(new FlowLayout());
         content.add(label1);
