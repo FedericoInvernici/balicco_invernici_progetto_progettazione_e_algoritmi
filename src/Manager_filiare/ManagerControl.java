@@ -39,6 +39,7 @@ public class ManagerControl {
 	class cambiaprezzo implements ActionListener {
         public void actionPerformed(ActionEvent e) {
         	new DialogPrezzo();
+        	
         }
 	}
 	
@@ -48,100 +49,6 @@ public class ManagerControl {
         }
 	}
 	
-	//creo jdialog per il metodo oredina
-	public static class DialogOrdina
-	 { 
-		 private static Dialog d;
-		 JTextField nomegiocoText = new JTextField("Scrivi il gioco da ordinare");
-		 JButton bordina = new JButton("Ordina");
-		 JButton bannulla = new JButton("Annulla");
-		 
-		 public DialogOrdina() {
-		        JFrame f= new JFrame();  
-		        nomegiocoText.setEditable(true); 
-		        d = new JDialog(f , "ordina un gioco", true);
-		        d.setSize(400, 120);
-		        d.setLocation(450, 240);
-				
-				bordina.addActionListener(new ActionListener()  
-				{  
-		            public void actionPerformed( ActionEvent e )  
-		            {  
-		            	if (!nomegiocoText.getText().equals("") || 
-		            		!nomegiocoText.getText().equals("Scrivi il gioco da ordinare")) 
-						{
-							//TODO
-							DialogOrdina.d.setVisible(false); 
-						}else{
-							String message="Devi prima scrivere una frase";
-							JOptionPane.showMessageDialog(new JFrame(), message, "Errore", JOptionPane.ERROR_MESSAGE);
-						}
-		            }  
-		        }); 
-				bannulla.addActionListener(new ActionListener()  
-				{  
-		            public void actionPerformed( ActionEvent e )  
-		            {  
-		                DialogOrdina.d.setVisible(false);  
-		            }  
-		        }); 
-				 
-				d.add(nomegiocoText,BorderLayout.NORTH);
-				d.add(bordina,BorderLayout.CENTER);		
-				d.add(bannulla,BorderLayout.SOUTH);
-				d.setVisible(true); 
-		}  
-	 }
-	
-	
-	//creo jdialog per il metodo oredina
-	public static class DialogPrezzo
-	{ 
-		 private static Dialog d;
-		 JTextField nomegiocoText = new JTextField("Scrivi il gioco di cui cambiare il prezzo");
-		 JTextField prezzogiocoText = new JTextField("Scegli il prezzo da dargli");
-		 JButton bcambia = new JButton("Cambia prezzo");
-		 JButton bannulla = new JButton("Annulla");
-		 
-		 public DialogPrezzo() {
-		        JFrame f= new JFrame();  
-		        nomegiocoText.setEditable(true);
-		        prezzogiocoText.setEditable(true);
-		        d = new JDialog(f , "cambia il prezzo a un gioco", true); 
-			    d.setSize(400, 120);
-			    d.setLocation(450, 240);
-			    
-					
-				bcambia.addActionListener(new ActionListener()  
-				{  
-			        public void actionPerformed( ActionEvent e )  
-			        {  
-			        if (!nomegiocoText.getText().equals("") || 
-			            !nomegiocoText.getText().equals("Scrivi il gioco di cui cambiare il prezzo")) 
-					{
-			        	//TODO
-						DialogPrezzo.d.setVisible(false); 
-					}else{
-						String message="Devi prima scrivere una frase";
-						JOptionPane.showMessageDialog(new JFrame(), message, "Errore", JOptionPane.ERROR_MESSAGE);
-						}
-			        }  
-			    }); 
-				bannulla.addActionListener(new ActionListener()  
-				{  
-			       public void actionPerformed( ActionEvent e )  
-			       {  
-			           DialogPrezzo.d.setVisible(false);  
-			       }  
-			   }); 	
-				
-				d.add(nomegiocoText,BorderLayout.NORTH);
-				d.add(prezzogiocoText,BorderLayout.CENTER);	
-				d.add(bcambia,BorderLayout.WEST);
-				d.add(bannulla,BorderLayout.EAST);
-				d.setVisible(true); 
-		}  
-	}
 	
 	
 	
