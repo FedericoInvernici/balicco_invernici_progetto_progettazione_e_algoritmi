@@ -8,8 +8,8 @@ import Record.GiocoPrenotato;
 
 public class CommessoModel {
 	
-	ArrayList<Giochi> g = new ArrayList<>();	//TODO utilizzo arraylist per testareù
-	ArrayList<GiocoPrenotato> preo = new ArrayList<>();	//TODO utilizzo arraylist per testareù
+	ArrayList<Giochi> g = new ArrayList<>();	//TODO utilizzo arraylist per testareï¿½
+	ArrayList<GiocoPrenotato> preo = new ArrayList<>();	//TODO utilizzo arraylist per testareï¿½
 	
 	public CommessoModel() {
 		// TODO 
