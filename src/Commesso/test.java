@@ -3,7 +3,7 @@ package Commesso;
 import org.json.JSONString; //libreria per la gestione di JSON
 import utility.GestoreFile;
 import utility.GestoreJson;
-import utility.ValoreIntero;
+import utility.ValoreIntero; //interfaccia per la ricerca interpolata
 import utility.RicercaInterpolata;
 
 
@@ -40,7 +40,7 @@ public class test {
 		String a3 = "abe";
 		String a4 = "abf";
 		String a5 = "abg";
-		String a6 = "abf";
+		String a6 = "abcaba"; //stringa da ricercare
 
 		String v[] = {a1,a2,a3,a4,a5};
 		

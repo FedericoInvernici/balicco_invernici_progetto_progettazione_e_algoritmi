@@ -16,8 +16,8 @@ public class RicercaInterpolata {
 	 * 
 	 */
 	public static <T extends ValoreIntero> boolean TrovaElementoInterp(T vett[], T elem, int iniz, int fine) {
-		int indice= iniz + (fine-iniz)*(elem.interoPerRicerca()-vett[iniz].interoPerRicerca())/
-				(vett[fine].interoPerRicerca()-vett[iniz].interoPerRicerca());
+		int indice= iniz + Math.round((fine-iniz)*((float)elem.interoPerRicerca()-(float)vett[iniz].interoPerRicerca())/
+				((float)vett[fine].interoPerRicerca()-(float)vett[iniz].interoPerRicerca()));
 		System.out.println("Inizio:"+iniz+"  Fine: "+ fine +" Indice: "+ indice);
 		if(indice<iniz||indice>fine) return false;
 		else if(vett[indice].interoPerRicerca()==elem.interoPerRicerca()) return true;
@@ -38,9 +38,8 @@ public class RicercaInterpolata {
 
 	private static <T extends Comparable> boolean TrovaElementoCompInt(T[] vett, T elem, int iniz, int fine) {
 		if(iniz==fine) return false; //previene la divisione per zero nel calcolo dell'indice
-		int indice= iniz + Math.round((fine-iniz)*(elem.compareTo(vett[iniz])/
-				vett[fine].compareTo(vett[iniz])));
-		System.out.println("Inizio:"+iniz+"  Fine: "+ fine +" Indice: "+ indice);
+		int indice= iniz + Math.round((fine-iniz)*((float)elem.compareTo(vett[iniz])/
+				(float)vett[fine].compareTo(vett[iniz])));
 		if(indice<iniz||indice>fine) return false;
 		else if(vett[indice].compareTo(elem)==0) return true;
 		else if(vett[indice].compareTo(elem)<0) return TrovaElementoCompInt(vett, elem, indice+1, fine);
