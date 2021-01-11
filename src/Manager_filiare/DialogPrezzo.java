@@ -17,8 +17,10 @@ import javax.swing.JTextField;
 public class DialogPrezzo
 { 
 	private static Dialog d;
-	JTextField nomegiocoText = new JTextField("Scrivi il gioco di cui cambiare il prezzo");
-	JTextField prezzogiocoText = new JTextField("Scegli il prezzo da dargli");
+	private String s1="Scrivi il gioco da ordinare";
+	private String s2="Scegli il prezzo da dargli";
+	JTextField nomegiocoText = new JTextField(s1);
+	JTextField prezzogiocoText = new JTextField(s2);
 	JButton bcambia = new JButton("Cambia prezzo");
 	JButton bannulla = new JButton("Annulla");
 			 
@@ -36,7 +38,7 @@ public class DialogPrezzo
 			public void actionPerformed( ActionEvent e )  
 			{  
 				if (!nomegiocoText.getText().equals("") || 
-				    !nomegiocoText.getText().equals("Scrivi il gioco di cui cambiare il prezzo")) 
+				    !nomegiocoText.getText().equals(s1)) 
 				{
 				       //TODO
 					DialogPrezzo.d.setVisible(false); 

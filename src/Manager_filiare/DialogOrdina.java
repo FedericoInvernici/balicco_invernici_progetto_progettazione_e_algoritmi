@@ -16,7 +16,8 @@ import javax.swing.JTextField;
 public class DialogOrdina
 { 
 	private static Dialog d;
-	JTextField nomegiocoText = new JTextField("Scrivi il gioco da ordinare");
+	private String s1="Scrivi il gioco da ordinare";
+	JTextField nomegiocoText = new JTextField(s1);
 	JButton bordina = new JButton("Ordina");
 	JButton bannulla = new JButton("Annulla");
 		 
@@ -32,7 +33,7 @@ public class DialogOrdina
 		       public void actionPerformed( ActionEvent e )  
 		       {  
 		            if (!nomegiocoText.getText().equals("") || 
-		            	!nomegiocoText.getText().equals("Scrivi il gioco da ordinare")) 
+		            	!nomegiocoText.getText().equals(s1)) 
 					{
 						//TODO
 		            	DialogOrdina.d.setVisible(false); 

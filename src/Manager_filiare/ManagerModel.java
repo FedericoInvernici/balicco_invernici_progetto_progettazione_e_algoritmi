@@ -16,11 +16,46 @@ public class ManagerModel {
 	}
 	
 	
+	//aggiunge un un gioco nuovo
+	public void aggiungigiochi(String nome, double f, double g2) {
+		Giochi g1 = new Giochi(nome, f, g2, 0, 0, 0);
+		g.add(g1);
+	}
+		
+	//aggiunge una quantita a un gioco scegliendo tra quantita di giochi usati o nuovi
+	public void aggiungiquantitagiochi(String nome, boolean nuovo, int quantita) {
+		for (int i = 0; i < g.size(); i++) {
+			if (g.get(i).getNome().equals(nome)) {			//cerco tra i giochi quello col nome uguale	
+				if (nuovo) {
+					g.get(i).aggiungiQnuovo(quantita);		//e quando lo trova gli sostituisce il prezzo
+				}else {
+					g.get(i).aggiungiQusato(quantita);;	//distinguendo tra nuovoe usato 
+				}
+			}
+		}
+	}
 	
+	//metodo di quando un gioco viene venduto un gioco e che quindi ne diminuisce la quantita; se non ci sono 
+	//più copie (quantita == 0) restituisce false
+	public boolean vendita(String nome, boolean nuovo) {
+		for (int i = 0; i < g.size(); i++) {
+			if (g.get(i).getNome().equals(nome)) {			//cerco tra i giochi quello col nome uguale	
+				if (nuovo) {
+					g.get(i).quantitaNuovomenomeno();		//e quando lo trova gli sostituisce il prezzo
+				}else {
+					g.get(i).quantitaUsatomenomeno();	//distinguendo tra nuovoe usato 
+				}
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	
+	//cambia il prezzo del gioco "nome"
 	public void cambiaprezzo(String nome, boolean nuovo, float nuovoprezzo) {
 		for (int i = 0; i < g.size(); i++) {
 			if (g.get(i).getNome().equals(nome)) {			//cerco tra i giochi quello col nome uguale
-						
 				if (nuovo) {
 					g.get(i).setPrezzo_nuovo(nuovoprezzo);		//e quando lo trova gli sostituisce il prezzo
 				}else {
@@ -32,12 +67,23 @@ public class ManagerModel {
 	
 	
 	
+	
 	public void ordinaprodotto(String nome, int quantita) {
 		
 	}
 	
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	//crea un report sui giochi venduti negli ultimi nmesi
 	public String reportdata(int nmesi) {	//lista di iochi venduti negli ultimi n mesi
 		String testo_report="";
 		Date data_riferimento = new Date(System.currentTimeMillis());
@@ -61,8 +107,7 @@ public class ManagerModel {
 	}
 	
 	
+	//
 	
 	
-	
-	//TODO
 }

@@ -26,6 +26,8 @@ public class ManagerControl {
 		mview.addOrdinaListener(new ordina());
 		mview.addCambiaPrezzoListener(new cambiaprezzo());
 		mview.addReportListener(new report());
+		mview.addNuovoGiocoListener(new nuovogioco());
+		mview.addNuovaCopiaListener(new nuovacopia());
 	}
 	
 	
@@ -44,6 +46,18 @@ public class ManagerControl {
 	}
 	
 	class report implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+        	//TODO
+        }
+	}
+	
+	class nuovogioco implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+        	new DialogNuovoGioco(mmodel);
+        }
+	}
+	
+	class nuovacopia implements ActionListener {
         public void actionPerformed(ActionEvent e) {
         	//TODO
         }

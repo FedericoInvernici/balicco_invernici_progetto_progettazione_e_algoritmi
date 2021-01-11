@@ -20,16 +20,21 @@ public class ManagerView extends JFrame {
 	private JButton    ordinaButton 	 = new JButton("Ordina un gioco");
 	private JButton    cambiaprezzoButton   = new JButton("Cambia il prezzo a gioco"); 
 	private JButton    reportButton    	 = new JButton("Chiedi report");
+	private JButton    nuovogiocoButton   = new JButton("Aggiungi un nuovo gioco"); 
+	private JButton    nuovacopiaButton    	 = new JButton("Aggiungi una nuova copia di un gioco");
+	private JButton    vendiButton    	 = new JButton("Vendi un gioco");
 	private ManagerModel mmodel;
 	
 	public ManagerView(ManagerModel m) {
 		mmodel = m;
 		JPanel content = new JPanel();
 		content.setLayout(new FlowLayout());
-        content.add(nomegiocoText);
+        //content.add(nomegiocoText);
         content.add(ordinaButton);
         content.add(cambiaprezzoButton);
         content.add(reportButton);
+        content.add(nuovogiocoButton);
+        content.add(nuovacopiaButton);
         this.setContentPane(content);
         this.pack();
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -51,6 +56,13 @@ public class ManagerView extends JFrame {
 		reportButton.addActionListener(m);
     }
 	
+	void addNuovoGiocoListener(ActionListener m) {
+		nuovogiocoButton.addActionListener(m);
+    }
+	
+	void addNuovaCopiaListener(ActionListener m) {
+		nuovacopiaButton.addActionListener(m);
+    }
 		
 }
 
@@ -58,4 +70,4 @@ public class ManagerView extends JFrame {
 
 
 
-		
+	

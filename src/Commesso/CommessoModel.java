@@ -15,7 +15,7 @@ public class CommessoModel {
 		// TODO 
 	}
 	
-	public float prezzoacquisto(String nome, boolean nuovo)
+	public double prezzoacquisto(String nome, boolean nuovo)
 	{
 		for (int i = 0; i < g.size(); i++) {
 			if (g.get(i).getNome().equals(nome)) {			//cerco tra i giochi quello col nome uguale
@@ -31,9 +31,9 @@ public class CommessoModel {
 	
 	
 	
-	public float ritirousato(String nome, int condizioni)
+	public double ritirousato(String nome, int condizioni)
 	{
-		float prezzo = 0;
+		double prezzo = 0;
 		for (int i = 0; i < g.size(); i++) {				//cerco tra i giochi quello col nome uguale
 			if (g.get(i).getNome().equals(nome)) {			 
 				prezzo = g.get(i).getPrezzo_usato();		 
