@@ -27,11 +27,11 @@ public class test {
 		
 		Giochi g1 = new Giochi("g2", 6.0, 7.4, 3, 5, 70);
 		g.add(new Giochi("g2", 6.0, 7.4, 3, 5, 70));
-		//g.add(new Giochi("g3", 4.0, 3.4, 5, 5, 70));
+		g.add(new Giochi("g3", 4.0, 3.4, 5, 5, 70));
 		js.inserisci("giochi", g);
 		System.out.println(js.toString());
 		System.out.println(g1.toString());
-		//fi.creaFileJson("test1");
-		//fi.scritturaSuFile("test1", js.toString());
+		fi.creaFileJson("test1");
+		fi.scritturaSuFile("test1", js.toString());
 	}
 }

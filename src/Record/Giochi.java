@@ -2,7 +2,9 @@ package Record;
 
 import java.lang.reflect.Constructor;
 
-public class Giochi {
+import org.json.JSONString;
+
+public class Giochi  implements JSONString{
 
 	String nome;
 	double prezzo_nuovo;
@@ -65,8 +67,8 @@ public class Giochi {
 	
 	public String toJSONString() {
 		String s;
-		s="Nome: " + nome+" p_nuovi: " + prezzo_nuovo + " p_usati " + prezzo_usato + " q_nuovi: " + quantita_nuovo +
-				" q_usati: " + quantita_usato + " q_preordinabili: " + quantita_preordinabile;
+		s="{Nome: " + nome+" p_nuovi: " + prezzo_nuovo + " p_usati: " + prezzo_usato + " q_nuovi: " + quantita_nuovo +
+				" q_usati: " + quantita_usato + " q_preordinabili: " + quantita_preordinabile+"}";
 		return s;
 	}
 }

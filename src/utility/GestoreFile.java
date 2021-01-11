@@ -28,7 +28,7 @@ public class GestoreFile {
 	 * nel parametro "testo" */
 	public void scritturaSuFile(String nomeFile, String testo) {
 		try {
-			FileWriter fileInput = new FileWriter("data\\"+nomeFile,true);
+			FileWriter fileInput = new FileWriter("data\\"+nomeFile+".json",true);
 			fileInput.write(testo);
 			fileInput.close();
 		} catch(IOException e){
