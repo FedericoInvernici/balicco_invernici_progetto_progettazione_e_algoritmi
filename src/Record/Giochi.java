@@ -2,9 +2,11 @@ package Record;
 
 import java.lang.reflect.Constructor;
 
-import org.json.JSONString;
+import org.json.simple.JSONAware;
 
-public class Giochi  implements JSONString{
+
+
+public class Giochi  implements JSONAware{
 
 	String nome;
 	double prezzo_nuovo;
@@ -64,11 +66,14 @@ public class Giochi  implements JSONString{
 	public void quantitaNuovomenomeno() {
 		this.quantita_nuovo--;
 	}
-	
+	/*
+	 * Metodo dell'interfaccia JSONAware, che richiede di restituire i dati della classe in un formato compatibile al JSON.
+	 * La stringa deve essere perciò conforme agli standard per essere parsata correttamente.
+	 */
 	public String toJSONString() {
 		String s;
-		s="{Nome: " + nome+" p_nuovi: " + prezzo_nuovo + " p_usati: " + prezzo_usato + " q_nuovi: " + quantita_nuovo +
-				" q_usati: " + quantita_usato + " q_preordinabili: " + quantita_preordinabile+"}";
+		s= "{\"Nome\":\"" + nome+"\", \"p_nuovi\":" + prezzo_nuovo + ", \"p_usati\":" + prezzo_usato + ", \"q_nuovi\":" + quantita_nuovo +
+				", \"q_usati\":" + quantita_usato + ", \"q_preordinabili\":" + quantita_preordinabile+"}";
 		return s;
 	}
 }
