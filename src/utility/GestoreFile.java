@@ -1,8 +1,14 @@
 package utility;
 
 import java.io.File;  //Classe per la gestione dei File
+import java.io.FileReader;
 import java.io.FileWriter; //Classe per la gestione della scrittura di stringhe nei File
 import java.io.IOException; //Eccezione per problemi di I/O
+
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
 
 
 public class GestoreFile {
@@ -28,12 +34,34 @@ public class GestoreFile {
 	 * nel parametro "testo" */
 	public void scritturaSuFile(String nomeFile, String testo) {
 		try {
-			FileWriter fileInput = new FileWriter("data\\"+nomeFile+".json",true);
+			FileWriter fileInput = new FileWriter("data\\"+nomeFile); //se metto come secondo argomento "true", la stringa viene messa in coda
 			fileInput.write(testo);
 			fileInput.close();
 		} catch(IOException e){
 			System.out.println("Errore nell'accesso/scrittura al file");
 		} 		
+	}
+	
+	/*
+	 * Riceve come argomento il nome del file (compreso di estensione) da cui ricavare i dati in formato JSON.
+	 * Restituisce il JSONObject che si genera dal parsing del file. Ritorna un null in caso non sia presente nessun
+	 * dato in formato JSON
+	 */
+	public JSONObject letturaDaFileJSON(String nomeFile) {
+		JSONParser parser = new JSONParser();
+		Object ogg = null;
+		try {
+			FileReader fileOutput = new FileReader("data\\"+nomeFile);
+			ogg = parser.parse(fileOutput);
+			JSONObject oggettoLetto = (JSONObject) ogg;
+			fileOutput.close();
+			return oggettoLetto;
+		}catch(IOException e){
+			System.out.println("Errore nell'accesso al file");
+		} catch (ParseException e) {
+			System.out.println("Errore nel parsing");
+		} 
+		return (JSONObject) ogg;
 	}
 
 }
