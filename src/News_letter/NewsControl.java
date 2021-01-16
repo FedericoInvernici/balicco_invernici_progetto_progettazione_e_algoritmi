@@ -19,8 +19,8 @@ public class NewsControl {
 	
 	//metodi dei button
 	class spedisci implements ActionListener {
-        public void actionPerformed(ActionEvent e) {
-        	//TODO
+        public void actionPerformed(ActionEvent e) { 
+        	nmodel.spedisci(nview.textArea.getText());
         }
 	}
 	

@@ -33,13 +33,12 @@ public class NewsView extends JFrame {
         this.setContentPane(content);
         this.pack();
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setBounds(400, 200, 500, 200);
+        this.setBounds(400, 200, 400, 250);
 	}
 	
 	
-	void addAcqustaListener(ActionListener m) {
-		System.out.println("ciao");
-		sendButton.addActionListener(m);
+	void addAcqustaListener(ActionListener m) { 
+		sendButton.addActionListener(m); 
     }
 	
 	

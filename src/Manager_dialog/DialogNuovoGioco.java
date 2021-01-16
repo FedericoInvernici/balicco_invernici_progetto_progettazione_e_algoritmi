@@ -1,4 +1,4 @@
-package Manager_filiare;
+package Manager_dialog;
 
 import java.awt.BorderLayout;
 import java.awt.Dialog;
@@ -13,6 +13,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import org.w3c.dom.events.EventException;
+
+import Manager_filiare.ManagerModel;
 
 
 //creo jdialog per il metodo nuovogioco
@@ -32,7 +34,7 @@ public class DialogNuovoGioco
 		   JFrame f= new JFrame();  
 		   mm = m;
 		   nomegiocoText.setEditable(true); 
-		   d = new JDialog(f , "ordina un gioco", true);
+		   d = new JDialog(f , "Aggiungi un gioco al catalogo", true);
 		   d.setSize(400, 120);
 		   d.setLocation(450, 240);
 				
@@ -42,12 +44,12 @@ public class DialogNuovoGioco
 		       {
 		    	   	try {
 		    	   		if (!nomegiocoText.getText().equals("") || !nomegiocoText.getText().equals(s1) ||
-		            	!nuovoText.getText().equals("") || !nuovoText.getText().equals(s2) ||
-		            	!usatoText.getText().equals("") || !usatoText.getText().equals(s3) ) 
+		    	   				!nuovoText.getText().equals("") || !nuovoText.getText().equals(s2) ||
+		    	   				!usatoText.getText().equals("") || !usatoText.getText().equals(s3) ) 
 		    	   		{
 		    	   			mm.aggiungigiochi(nomegiocoText.getText(), 		//aggiunge un gioco nuovo
-								Float.parseFloat(nuovoText.getText()), 
-								Float.parseFloat(usatoText.getText()));
+		    	   					Float.parseFloat(nuovoText.getText()), 
+		    	   					Float.parseFloat(usatoText.getText()));
 		    	   			DialogNuovoGioco.d.setVisible(false); 
 		    	   		}else{
 		    	   			String message="Devi inserire i dati correttamente";

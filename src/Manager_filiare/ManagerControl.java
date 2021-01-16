@@ -14,6 +14,12 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import Manager_dialog.DialogNuovoGioco;
+import Manager_dialog.DialogOrdina;
+import Manager_dialog.DialogReport;
+import Manager_dialog.DialogCambiaPrezzo;
+import Manager_dialog.DialogNuoveCopie;
+
 
 public class ManagerControl {
 
@@ -34,20 +40,20 @@ public class ManagerControl {
 	//metodi dei button
 	class ordina implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-        	new DialogOrdina();
+        	new DialogOrdina(mmodel);
         }
 	}
 	
 	class cambiaprezzo implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-        	new DialogPrezzo();
+        	new DialogCambiaPrezzo(mmodel);
         	
         }
 	}
 	
 	class report implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-        	//TODO
+        	new DialogReport(mmodel);
         }
 	}
 	
@@ -59,7 +65,7 @@ public class ManagerControl {
 	
 	class nuovacopia implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-        	//TODO
+        	new DialogNuoveCopie(mmodel);
         }
 	}
 	

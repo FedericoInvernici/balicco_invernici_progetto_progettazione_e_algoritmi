@@ -59,6 +59,10 @@ public class Giochi  implements JSONAware{
 		this.quantita_usato=this.quantita_usato+q;
 	}
 	
+	public void quantitaUsatopiupiu() {
+		this.quantita_usato++;
+	}
+	
 	public void quantitaUsatomenomeno() {
 		this.quantita_usato--;
 	}

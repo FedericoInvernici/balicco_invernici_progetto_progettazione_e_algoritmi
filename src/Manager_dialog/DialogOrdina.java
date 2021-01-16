@@ -1,4 +1,4 @@
-package Manager_filiare;
+package Manager_dialog;
 
 import java.awt.BorderLayout;
 import java.awt.Dialog;
@@ -11,6 +11,8 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
+import Manager_filiare.ManagerModel;
+
 
 //creo jdialog per il metodo oredina
 public class DialogOrdina
@@ -20,11 +22,13 @@ public class DialogOrdina
 	JTextField nomegiocoText = new JTextField(s1);
 	JButton bordina = new JButton("Ordina");
 	JButton bannulla = new JButton("Annulla");
+	ManagerModel mm;
 		 
-	public DialogOrdina() {
+	public DialogOrdina(ManagerModel m) {
 		   JFrame f= new JFrame();  
+		   mm = m;
 		   nomegiocoText.setEditable(true); 
-		   d = new JDialog(f , "ordina un gioco", true);
+		   d = new JDialog(f , "Ordina un gioco", true);
 		   d.setSize(400, 120);
 		   d.setLocation(450, 240);
 				

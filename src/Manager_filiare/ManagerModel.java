@@ -3,23 +3,29 @@ package Manager_filiare;
 import java.util.ArrayList;
 import java.util.Date;
 
+import javax.print.attribute.standard.JobSheets;
+
 import Record.Giochi;
 import Record.GiocoVenduto;
+import utility.GestoreJson;
 
 public class ManagerModel {
 
 	ArrayList<Giochi> g = new ArrayList<>();	//TODO utilizzo arraylist per testare
-	ArrayList<GiocoVenduto> repo = new ArrayList<>();	//TODO utilizzo arraylist per testare
+	ArrayList<GiocoVenduto>vend = new ArrayList<>();	//TODO utilizzo arraylist per testare
 	
 	
-	public ManagerModel() { //TODO (forse)
+	public ManagerModel() { 
+		//letturaDaFileGiochi();
+		//letturaDaFilePreo();
 	}
 	
 	
 	//aggiunge un un gioco nuovo
-	public void aggiungigiochi(String nome, double f, double g2) {
-		Giochi g1 = new Giochi(nome, f, g2, 0, 0, 0);
+	public void aggiungigiochi(String nome, double prezzo_nuovo, double prezzo_usato) {
+		Giochi g1 = new Giochi(nome, prezzo_nuovo, prezzo_usato, 0, 0, 0);
 		g.add(g1);
+		scritturaSuFileGiochi();
 	}
 		
 	//aggiunge una quantita a un gioco scegliendo tra quantita di giochi usati o nuovi
@@ -33,23 +39,10 @@ public class ManagerModel {
 				}
 			}
 		}
+		scritturaSuFileGiochi();
 	}
 	
-	//metodo di quando un gioco viene venduto un gioco e che quindi ne diminuisce la quantita; se non ci sono 
-	//più copie (quantita == 0) restituisce false
-	public boolean vendita(String nome, boolean nuovo) {
-		for (int i = 0; i < g.size(); i++) {
-			if (g.get(i).getNome().equals(nome)) {			//cerco tra i giochi quello col nome uguale	
-				if (nuovo) {
-					g.get(i).quantitaNuovomenomeno();		//e quando lo trova gli sostituisce il prezzo
-				}else {
-					g.get(i).quantitaUsatomenomeno();	//distinguendo tra nuovoe usato 
-				}
-				return true;
-			}
-		}
-		return false;
-	}
+	
 	
 	
 	//cambia il prezzo del gioco "nome"
@@ -62,7 +55,8 @@ public class ManagerModel {
 					g.get(i).setPrezzo_usato(nuovoprezzo);	//distinguendo tra nuovoe usato 
 				}
 			}
-		}
+		}	//TODO potremmo aggiungere un controllo nel caso in cui veda il file o meno
+		scritturaSuFileGiochi();
 	}
 	
 	
@@ -75,16 +69,9 @@ public class ManagerModel {
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
 	//crea un report sui giochi venduti negli ultimi nmesi
 	public String reportdata(int nmesi) {	//lista di iochi venduti negli ultimi n mesi
+		//letturaDaFilePreo();
 		String testo_report="";
 		Date data_riferimento = new Date(System.currentTimeMillis());
 		if (data_riferimento.getMonth()>12) {		//creo data_riferimento e lo imposto con la data di nmesi fa
@@ -97,17 +84,35 @@ public class ManagerModel {
 		m = m - nmesi;
 		data_riferimento.setMonth(m);				//finisco di crearlo
 		
-		for (int i = 0; i < repo.size(); i++) {
-			if (data_riferimento.after (repo.get(i).getData_vendita())) {	//cerco i giochi venduti dopo la data_riferimento
-				testo_report = testo_report + " " + repo.get(i).getNome() + " " +
-						repo.get(i).getPrezzo() + "\n";
+		for (int i = 0; i < vend.size(); i++) {
+			if (data_riferimento.after (vend.get(i).getData_vendita())) {	//cerco i giochi venduti dopo la data_riferimento
+				testo_report = testo_report + " " + vend.get(i).getNome() + " " +
+						vend.get(i).getPrezzo() + "\n";
 			}
 		}
 		return testo_report;
 	}
 	
 	
-	//
+	//METODI LETTURA SCRITTURA DA FILE
+	
+	public void scritturaSuFileGiochi() {
+		GestoreJson js = new GestoreJson();
+		js.inserisci("GIOCHI", g);
+		js.scritturaSuFile("FileGiochi.json");
+	}
+	
+	public void letturaDaFileGiochi() { 
+		GestoreJson js = new GestoreJson();
+		js.letturaDaFileJSON("FileGiochi.json");
+		// TODO js.recupera(preo)
+	}
+	
+	public void letturaDaFilePreo() {
+		GestoreJson js = new GestoreJson();
+		js.letturaDaFileJSON("FileVenduti.json");
+		// TODO js.recupera(g)
+	}
 	
 	
 }

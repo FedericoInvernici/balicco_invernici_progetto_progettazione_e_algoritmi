@@ -11,32 +11,40 @@ import javax.swing.JTextField;
 
 public class CommessoView extends JFrame {
 	
-	private JLabel 	   label1			 = new JLabel("Inserisci nome gioco");
     private JTextField nomegiocoText     = new JTextField(30);
-    private JButton    acquistaButton 	 = new JButton("Acquista gioco");
+    private JButton    acquistanuovoButton 	 = new JButton("Acquista gioco nuovo"); 
+    private JButton    acquistausatoButton 	 = new JButton("Acquista gioco usato");
     private JButton    preordinaButton   = new JButton("Preordina gioco"); 
     private JButton    usatoButton    	 = new JButton("Ritira usato");
+    private JButton    prezzoButton      = new JButton("Preordina gioco"); 
+    private JButton    iscriviButton     = new JButton("Iscrivi un cliente");
 	private CommessoModel cmodel;
     
 	public CommessoView (CommessoModel c)
 	{
 		cmodel = c;
 		JPanel content = new JPanel();
-		content.setLayout(new FlowLayout());
-        content.add(label1);
+		content.setLayout(new FlowLayout()); 
         content.add(nomegiocoText);
-        content.add(acquistaButton);
+        content.add(acquistanuovoButton);
+        content.add(acquistausatoButton);
         content.add(preordinaButton);
         content.add(usatoButton);
+        content.add(prezzoButton);
+        content.add(iscriviButton);
         this.setContentPane(content);
         this.pack();
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setBounds(400, 200, 500, 200);
+        this.setBounds(400, 200, 430, 200);
 	}
 	
 	
-	void addAcqustaListener(ActionListener m) {
-		acquistaButton.addActionListener(m);
+	void addAcqustanuovoListener(ActionListener m) {
+		acquistausatoButton.addActionListener(m);
+    }
+	
+	void addAcqustausatoListener(ActionListener m) {
+		acquistanuovoButton.addActionListener(m);
     }
 	
 	void addPreordinaListener(ActionListener m) {
@@ -46,5 +54,25 @@ public class CommessoView extends JFrame {
 	void addUsatoListener(ActionListener m) {
 		usatoButton.addActionListener(m);
     }
+	
+	void addPrezzoListener(ActionListener m) {
+		prezzoButton.addActionListener(m);
+    }
+	
+	void addIscriviListener(ActionListener m) {
+		iscriviButton.addActionListener(m);
+    }
+	
+	
+	
+	
+	
+	public String getNomegiocoText() {
+		return nomegiocoText.getText();
+	}
+	
+	public void setNomegiocoText(String s) {
+		nomegiocoText.setText(s);
+	}
 	
 }
