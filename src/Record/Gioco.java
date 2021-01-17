@@ -4,6 +4,9 @@ public class Gioco {
 	//FARLO DIVENTARE INTERFACE?
 	String nome;
 	
+	public Gioco() {
+	}
+	
 	public Gioco(String nome) {
 		this.nome=nome;
 	}
