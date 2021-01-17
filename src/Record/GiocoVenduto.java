@@ -6,6 +6,7 @@ import java.util.spi.TimeZoneNameProvider;
 import javax.xml.crypto.Data;
 
 import org.json.simple.JSONAware;
+import org.json.simple.JSONObject;
 
 public class GiocoVenduto extends Gioco implements JSONAware{
 
@@ -19,7 +20,14 @@ public class GiocoVenduto extends Gioco implements JSONAware{
 		this.data_vendita=d;
 		this.nuovo=nuovo;
 	}
-	
+	// Costruttore a partire da un JSONObject (letto da file)
+	public GiocoVenduto(JSONObject jso) {
+		nome=(String) jso.get("Nome");
+		this.prezzo=(double) jso.get("prezzo");
+		this.data_vendita= new Date((int)(long)jso.get("anno"), (int)(long)jso.get("mese"), (int)(long)jso.get("giorno"));
+		this.nuovo=(boolean) jso.get("Nuovo");
+	}
+
 	public Date getData_vendita() {
 		return data_vendita;
 	}

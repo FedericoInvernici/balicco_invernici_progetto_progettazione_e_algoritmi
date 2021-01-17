@@ -1,6 +1,5 @@
 package Commesso;
 
-import org.json.JSONString; //libreria per la gestione di JSON
 import utility.GestoreFile;
 import utility.GestoreJson;
 import utility.ValoreIntero; //interfaccia per la ricerca interpolata

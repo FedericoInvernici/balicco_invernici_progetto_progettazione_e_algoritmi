@@ -5,7 +5,6 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 import org.json.simple.*; //Libreria per la gestione del formato JSON
 import org.json.simple.parser.JSONParser; // classe per il parsing di un file JSON
@@ -32,7 +31,7 @@ public class GestoreJson {
 		dati.put(chiave, vettoreDiValori);
 	}
 	
-	/* Metodo che si basa sul toString del JSONObject
+	/* Metodo che si basa sul toJSONString 
 	 * */
 	public String toString() {
 		return dati.toJSONString();
@@ -72,31 +71,27 @@ public class GestoreJson {
 	
 	/*
 	 * Riceve come argomento il nome del file (compreso di estensione) da cui ricavare i dati in formato JSON.
-	 * Tramite parsing del file, inserisce il suo contenuto nel campo JSONObject "dati".
+	 * Tramite il parsing restituisce l'ArrayList di oggetti corrispondente in base a quale dei quattro file viene letto 
+	 * (in caso di aggiunta di ulteriori file JSON occorrerebbero delle modifiche minori).
+	 * ES: se viene chiamato il letturaDaFileJSON("FileGiochi") viene restituito un ArrayList<Giochi>.
 	 */
 	public ArrayList<?> letturaDaFileJSON(String nomeFile) {
-		JSONParser parser = new JSONParser();
+		JSONParser parser = new JSONParser(); //oggetto per il parsing da file
+		
 		Object ogg = null;
 		JSONObject datiDaFile = null;
-		JSONArray vetDiDati = null;
-		ArrayList<Giochi> recordDiDati = new ArrayList<>();
+		ArrayList<?> recordDiDati = new ArrayList<>();
 		try {
 			FileReader fileOutput = new FileReader("data\\"+nomeFile);
 			ogg = parser.parse(fileOutput);
 			fileOutput.close();
-
 		}catch(IOException e){
 			System.out.println("Errore nell'accesso al file");
 		} catch (ParseException e) {
 			System.out.println("Errore nel parsing");
 		} 
-		
-		datiDaFile = (JSONObject) ogg; 
-		vetDiDati= (JSONArray) datiDaFile.get("giochi"); //Estraggo il vettore indicato dalla chiave "giochi", TODO da generalizzare per ogni record
-		for(Object o:vetDiDati) {
-			recordDiDati.add(new Giochi((JSONObject)o));
-		}
-
+		datiDaFile = (JSONObject) ogg;
+		recordDiDati = ConvertitoreJSONObj.converti(datiDaFile, nomeFile);
 		return recordDiDati;
 	}
 
