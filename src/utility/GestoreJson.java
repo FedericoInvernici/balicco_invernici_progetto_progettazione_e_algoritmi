@@ -4,10 +4,14 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.json.simple.*; //Libreria per la gestione del formato JSON
 import org.json.simple.parser.JSONParser; // classe per il parsing di un file JSON
 import org.json.simple.parser.ParseException; //classe per la gestione di parsing
+
+import Record.Giochi;
 
 
 /*classe di collegamento con la libreria org.json  */
@@ -70,13 +74,15 @@ public class GestoreJson {
 	 * Riceve come argomento il nome del file (compreso di estensione) da cui ricavare i dati in formato JSON.
 	 * Tramite parsing del file, inserisce il suo contenuto nel campo JSONObject "dati".
 	 */
-	public void letturaDaFileJSON(String nomeFile) {
+	public ArrayList<?> letturaDaFileJSON(String nomeFile) {
 		JSONParser parser = new JSONParser();
 		Object ogg = null;
+		JSONObject datiDaFile = null;
+		JSONArray vetDiDati = null;
+		ArrayList<Giochi> recordDiDati = new ArrayList<>();
 		try {
 			FileReader fileOutput = new FileReader("data\\"+nomeFile);
 			ogg = parser.parse(fileOutput);
-			this.dati = (JSONObject) ogg;
 			fileOutput.close();
 
 		}catch(IOException e){
@@ -84,6 +90,14 @@ public class GestoreJson {
 		} catch (ParseException e) {
 			System.out.println("Errore nel parsing");
 		} 
+		
+		datiDaFile = (JSONObject) ogg; 
+		vetDiDati= (JSONArray) datiDaFile.get("giochi"); //Estraggo il vettore indicato dalla chiave "giochi", TODO da generalizzare per ogni record
+		for(Object o:vetDiDati) {
+			recordDiDati.add(new Giochi((JSONObject)o));
+		}
+
+		return recordDiDati;
 	}
 
 	

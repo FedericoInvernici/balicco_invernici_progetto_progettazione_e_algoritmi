@@ -3,6 +3,7 @@ package Record;
 import java.lang.reflect.Constructor;
 
 import org.json.simple.JSONAware;
+import org.json.simple.JSONObject;
 
 
 
@@ -29,6 +30,16 @@ public class Giochi  implements JSONAware{
 		this.quantita_nuovo=i;
 		this.quantita_usato=j;
 		this.quantita_preordinabile=k;
+	}
+	
+	// Costruttore a partire da un JSONObject (letto da file)
+	public Giochi(JSONObject jso) {
+		this.nome= (String) jso.get("nome");
+		this.prezzo_nuovo=(double) jso.get("p_usati");
+		this.prezzo_usato=(double) jso.get("p_nuovi");
+		this.quantita_nuovo= (int)(long)jso.get("q_nuovi");
+		this.quantita_usato=(int)(long) jso.get("q_usati");
+		this.quantita_preordinabile=(int)(long) jso.get("q_preordinabili");
 	}
 
 	public String getNome() {
@@ -76,7 +87,7 @@ public class Giochi  implements JSONAware{
 	 */
 	public String toJSONString() {
 		String s;
-		s= "{\"Nome\":\"" + nome+"\", \"p_nuovi\":" + prezzo_nuovo + ", \"p_usati\":" + prezzo_usato + ", \"q_nuovi\":" + quantita_nuovo +
+		s= "{\"nome\":\"" + nome+"\", \"p_nuovi\":" + prezzo_nuovo + ", \"p_usati\":" + prezzo_usato + ", \"q_nuovi\":" + quantita_nuovo +
 				", \"q_usati\":" + quantita_usato + ", \"q_preordinabili\":" + quantita_preordinabile+"}";
 		return s;
 	}
