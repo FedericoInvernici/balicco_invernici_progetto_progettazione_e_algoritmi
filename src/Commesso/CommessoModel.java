@@ -128,7 +128,7 @@ public class CommessoModel {
 	
 	public void scritturaSuFilePreo() {
 		GestoreJson js = new GestoreJson();
-		js.inserisci("GIOCHI", preo);
+		js.inserisci("GIOCHI PRENOTATI", preo);
 		js.scritturaSuFile("FilePreordina.json");
 	}
 		
