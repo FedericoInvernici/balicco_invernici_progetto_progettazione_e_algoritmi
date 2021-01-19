@@ -11,13 +11,13 @@ import javax.swing.JTextField;
 
 public class CommessoView extends JFrame {
 	
-    private JTextField nomegiocoText     = new JTextField(30);
-    private JButton    acquistanuovoButton 	 = new JButton("Acquista gioco nuovo"); 
-    private JButton    acquistausatoButton 	 = new JButton("Acquista gioco usato");
-    private JButton    preordinaButton   = new JButton("Preordina gioco"); 
-    private JButton    usatoButton    	 = new JButton("Ritira usato");
-    private JButton    prezzoButton      = new JButton("Preordina gioco"); 
-    private JButton    iscriviButton     = new JButton("Iscrivi un cliente");
+    private JTextField nomegiocoText     	= new JTextField(30);
+    private JButton    acquistanuovoButton 	= new JButton("Acquista gioco nuovo"); 
+    private JButton    acquistausatoButton 	= new JButton("Acquista gioco usato");
+    private JButton    preordinaButton   	= new JButton("Preordina gioco"); 
+    private JButton    usatoButton    	 	= new JButton("Ritira usato");
+    private JButton    prezzoButton      	= new JButton("trova il prezzo"); 
+    private JButton    iscriviButton     	= new JButton("Iscrivi un cliente");
 	private CommessoModel cmodel;
     
 	public CommessoView (CommessoModel c)

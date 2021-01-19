@@ -3,11 +3,9 @@ package Commesso;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import Commeso_Dialog.DialogAcquista;
-import Commeso_Dialog.DialogGetPrezzo;
 import Commeso_Dialog.DialogIscrivi;
-import Commeso_Dialog.DialogPreordina;
-import Commeso_Dialog.DialogRitiroUsato;
+import Commeso_Dialog.DialogPreordina1;
+import Commeso_Dialog.DialogPreordina2;
 
 
 public class CommessoControl {
@@ -28,6 +26,9 @@ public class CommessoControl {
 	
 	
 	//metodi dei button
+	
+	//cerca il gioco sctritto nel campo text e se lo trova ne
+	//restituisce il prezzo
 	class acquistanuovo implements ActionListener {
         public void actionPerformed(ActionEvent e) {
         	String s;
@@ -43,6 +44,7 @@ public class CommessoControl {
         }
 	}
 	
+	//uguale al metodo sopra, ma per i giochi usati
 	class acquistausato implements ActionListener {
         public void actionPerformed(ActionEvent e) {
         	String s;
@@ -58,12 +60,17 @@ public class CommessoControl {
         }
 	}
 	
+	
+	//crea la queri per la prenotazione dei giochi
 	class preordina implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-        	new DialogPreordina();	//TODO
+        	new DialogPreordina1(cmodel);	
+        	new DialogPreordina2(cmodel);
         }
 	}
 	
+	//cerca il gioco scritto nel campo text, ne restituisce il 
+	//prezzo e aumenta la quantità di usato di quel gioco 
 	class usato implements ActionListener {
         public void actionPerformed(ActionEvent e) {
         	String s;
@@ -79,6 +86,7 @@ public class CommessoControl {
         }
 	}
 	
+	//restituisce il prezo del gioco col nome nel campo text
 	class prezzo implements ActionListener {
         public void actionPerformed(ActionEvent e) {
         	String s;
@@ -91,6 +99,7 @@ public class CommessoControl {
         }
 	}
 	
+	//crea i campi necessari per l'iscrizione di nuovi clienti
 	class iscrivi implements ActionListener {
         public void actionPerformed(ActionEvent e) {
         	new DialogIscrivi(cmodel);

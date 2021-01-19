@@ -6,7 +6,7 @@ import utility.ValoreIntero; //interfaccia per la ricerca interpolata
 import utility.RicercaInterpolata;
 
 
-public class test {
+public class Main_commesso {
 
 	
 	public static void main(String[] args) {

@@ -4,7 +4,7 @@ import Manager_filiare.ManagerControl;
 import Manager_filiare.ManagerModel;
 import Manager_filiare.ManagerView;
 
-public class Test {
+public class Main_news {
 
 	public static void main(String[] args) {
 		NewsModel nmodel = new NewsModel();

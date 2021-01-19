@@ -2,7 +2,7 @@ package Manager_filiare;
 
 import java.util.Date;
 
-public class test {
+public class Main_manager {
 
 	public static void main(String[] args) {
 		ManagerModel cmodel = new ManagerModel();

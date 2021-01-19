@@ -1,6 +1,7 @@
 package Record;
 
 import java.util.Date;
+import java.util.Set;
 
 import org.json.simple.JSONAware;
 import org.json.simple.JSONObject;
@@ -14,8 +15,8 @@ public class GiocoPrenotato extends Gioco implements JSONAware{
 	
 	public GiocoPrenotato(String nome, Double prezzo, Date d, String email, String cliente) {
 		super(nome);
-		this.prezzo=prezzo;
 		this.data_uscita=d;
+		this.prezzo=prezzo;
 		this.email_cliente=email;
 		this.nome_cliente=cliente;
 	}
@@ -37,4 +38,20 @@ public class GiocoPrenotato extends Gioco implements JSONAware{
 		return s;
 	}
 
+	public String getNome_cliente() {
+		return nome_cliente;
+	}
+	
+	public void setNome_cliente(String nome_cliente) {
+		this.nome_cliente = nome_cliente;
+	}
+	
+	public String getEmail_cliente() {
+		return email_cliente;
+	}
+	
+	public void setEmail_cliente(String email_cliente) {
+		this.email_cliente = email_cliente;
+	}
+	
 }

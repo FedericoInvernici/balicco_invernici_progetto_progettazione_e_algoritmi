@@ -11,17 +11,16 @@ import utility.GestoreJson;
 
 public class CommessoModel {
 	
-	ArrayList<Giochi> g = new ArrayList<>();	//TODO utilizzo arraylist per testare�
-	ArrayList<GiocoPrenotato> preo = new ArrayList<>();	//TODO utilizzo arraylist per testare�
-	ArrayList<GiocoVenduto> vend = new ArrayList<>();	//TODO utilizzo arraylist per testare�
+	ArrayList<Giochi> g = new ArrayList<>();	//utilizzo arraylist per i record (giochi,iscritti...)
+	ArrayList<GiocoPrenotato> preo = new ArrayList<>();
+	ArrayList<GiocoVenduto> vend = new ArrayList<>();
 	ArrayList<Iscritto> iscr = new ArrayList<>();
-	GestoreJson js = new GestoreJson();
 	
-	public CommessoModel() {
-		//letturaDaFileGiochi();
-		//letturaDaFilePreo();
-		//letturaDaFileVend();
-		//letturaDaFileIscritti();
+	public CommessoModel() {	//il costruttore legge i file
+		letturaDaFileGiochi();
+		letturaDaFilePreo();
+		letturaDaFileVend();
+		letturaDaFileIscritti();
 	}
 	
 	public double trovaprezzo(String nome, boolean nuovo){
@@ -56,8 +55,17 @@ public class CommessoModel {
 	}
 	
 	
+	//metodi che aggiundono oggetti al array preo
 	public void preordina(String nome, Double prezzo, Date d, String email, String cliente){			 
 		preo.add(new GiocoPrenotato( nome, prezzo, d, email, cliente));
+		scritturaSuFilePreo();
+	}
+	public void preordinaultimocliete(String email, String cliente){			 
+		GiocoPrenotato g;
+		g = preo.get(preo.size()-1);
+		g.setNome_cliente(cliente);
+		g.setEmail_cliente(email);
+		preo.set(preo.size()-1,g);
 		scritturaSuFilePreo();
 	}
 	
@@ -68,7 +76,7 @@ public class CommessoModel {
 	public double vendita(String nome, boolean nuovo) {
 		Giochi gtemp;
 		Double d;
-		for (int i = 0; i < g.size(); i++) {
+		for (int i = 0; i < g.size(); i++) {			//TODO implementare qui
 			if (g.get(i).getNome().equals(nome)) {			//cerco tra i giochi quello col nome uguale	
 				gtemp = g.get(i);
 				if (nuovo) {
@@ -108,43 +116,47 @@ public class CommessoModel {
 	//METODI LETTURA SCRITTURA DA FILE
 	
 	public void scritturaSuFileGiochi() {
+		GestoreJson js = new GestoreJson();
 		js.inserisci("GIOCHI", g);
 		js.scritturaSuFile("FileGiochi.json");
 	}
 		
 	public void letturaDaFileGiochi() {
+		GestoreJson js = new GestoreJson();
 		js.letturaDaFileJSON("FileGiochi.json");
-		// TODO js.recupera(g)
 	}
 	
 	public void scritturaSuFilePreo() {
+		GestoreJson js = new GestoreJson();
 		js.inserisci("GIOCHI", preo);
 		js.scritturaSuFile("FilePreordina.json");
 	}
 		
 	public void letturaDaFilePreo() {
+		GestoreJson js = new GestoreJson();
 		js.letturaDaFileJSON("FilePreordina.json");
-		// TODO js.recupera(preo)
 	}
 	
 	public void scritturaSuFileVend() {
+		GestoreJson js = new GestoreJson();
 		js.inserisci("GIOCHI", vend);
 		js.scritturaSuFile("FileVenduti.json");
 	}
 		
 	public void letturaDaFileVend() {
+		GestoreJson js = new GestoreJson();
 		js.letturaDaFileJSON("FileVenduti.json");
-		// TODO js.recupera(vend)
 	}
 	
 	public void scritturaSuFileIscritti() {
+		GestoreJson js = new GestoreJson();
 		js.inserisci("GIOCHI", iscr);
 		js.scritturaSuFile("FileIscritti.json");
 	}
 		
 	public void letturaDaFileIscritti() {
+		GestoreJson js = new GestoreJson();
 		js.letturaDaFileJSON("FileIscritti.json");
-		// TODO js.recupera(iscr)
 	}
 	
 }

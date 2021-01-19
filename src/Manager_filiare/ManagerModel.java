@@ -5,6 +5,7 @@ import java.util.Date;
 
 import javax.print.attribute.standard.JobSheets;
 
+import Finte_applicazioni_esterne.Finto_gestore_magazino;
 import Record.Giochi;
 import Record.GiocoVenduto;
 import utility.GestoreJson;
@@ -15,9 +16,9 @@ public class ManagerModel {
 	ArrayList<GiocoVenduto>vend = new ArrayList<>();	//TODO utilizzo arraylist per testare
 	
 	
-	public ManagerModel() { 
-		//letturaDaFileGiochi();
-		//letturaDaFilePreo();
+	public ManagerModel() { //il costruttore legge i file
+		letturaDaFileGiochi();
+		letturaDaFilePreo();
 	}
 	
 	
@@ -63,7 +64,8 @@ public class ManagerModel {
 	
 	
 	public void ordinaprodotto(String nome, int quantita) {
-		
+		Finto_gestore_magazino fm = new Finto_gestore_magazino();
+		fm.InviaRichiestaGiochiPerFinta(nome, quantita);
 	}
 	
 	
@@ -104,14 +106,12 @@ public class ManagerModel {
 	
 	public void letturaDaFileGiochi() { 
 		GestoreJson js = new GestoreJson();
-		js.letturaDaFileJSON("FileGiochi.json");
-		// TODO js.recupera(preo)
+		js.letturaDaFileJSON("FileGiochi.json"); 
 	}
 	
 	public void letturaDaFilePreo() {
 		GestoreJson js = new GestoreJson();
-		js.letturaDaFileJSON("FileVenduti.json");
-		// TODO js.recupera(g)
+		js.letturaDaFileJSON("FileVenduti.json"); 
 	}
 	
 	

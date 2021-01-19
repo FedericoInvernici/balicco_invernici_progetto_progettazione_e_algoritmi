@@ -9,14 +9,14 @@ import utility.GestoreJson;
 
 public class NewsModel {
 
-	ArrayList<Iscritto> iscr = new ArrayList<>();	//TODO utilizzo arraylist per testare
+	ArrayList<Iscritto> iscr = new ArrayList<>();	//utilizzo arraylist per testare
 	Finto_gestore_mail gm = new Finto_gestore_mail();
-	GestoreJson js = new GestoreJson();
 	
-	public NewsModel() { 
-		//letturaDaFileIscritti();
+	public NewsModel() { //costruttore legge i file
+		letturaDaFileIscritti();
 	}
 	
+	//invia la mail testo a ogni iscritto alla newsletter
 	public void spedisci(String testo) { 
 		for (int i = 0; i < iscr.size(); i++) {  
 			gm.InviaMailPerFinta(iscr.get(i).getEmail(), testo);
@@ -24,10 +24,11 @@ public class NewsModel {
 	}
 	
 	
+	//METODI SUI FILE
 		
 	public void letturaDaFileIscritti() {
+		GestoreJson js = new GestoreJson();
 		js.letturaDaFileJSON("FileIscritti.json");
-		// TODO js.recupera(iscr)
 	}
 	
 }

@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import Commesso.CommessoModel;
+import Manager_dialog.DialogCambiaPrezzo;
 
 public class DialogIscrivi
 { 
@@ -45,6 +46,7 @@ public class DialogIscrivi
 		    	   				!cognomeText.getText().equals("") || !cognomeText.getText().equals(s3) ) 
 		    	   		{
 		    	   			cm.iscrivi(emailText.getText(), nomeText.getText(), cognomeText.getText()); 
+							DialogIscrivi.d.setVisible(false); 
 		    	   		}else{
 		    	   			String message="Devi inserire i dati correttamente";
 		    	   			JOptionPane.showMessageDialog(new JFrame(),message,"Errore",JOptionPane.ERROR_MESSAGE);
