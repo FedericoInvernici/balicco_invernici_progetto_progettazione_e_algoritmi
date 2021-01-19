@@ -7,7 +7,7 @@ import org.json.simple.JSONObject;
 
 
 
-public class Giochi  implements JSONAware{
+public class Giochi  implements JSONAware,Comparable{
 
 	String nome;
 	double prezzo_nuovo;
@@ -91,4 +91,11 @@ public class Giochi  implements JSONAware{
 				", \"q_usati\":" + quantita_usato + ", \"q_preordinabili\":" + quantita_preordinabile+"}";
 		return s;
 	}
+	
+	public int compareTo(Object o){
+		return this.getNome().compareTo(((Giochi) o).getNome());
+	}
+
+	
+	
 }

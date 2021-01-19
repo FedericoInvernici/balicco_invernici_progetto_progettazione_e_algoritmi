@@ -60,6 +60,7 @@ public class ManagerControl {
 	class nuovogioco implements ActionListener {
         public void actionPerformed(ActionEvent e) {
         	new DialogNuovoGioco(mmodel);
+        	mmodel.ordinaArrayGiochi();
         }
 	}
 	

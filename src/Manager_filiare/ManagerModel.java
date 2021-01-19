@@ -1,7 +1,9 @@
 package Manager_filiare;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
+import java.util.List;
 
 import javax.print.attribute.standard.JobSheets;
 
@@ -12,8 +14,8 @@ import utility.GestoreJson;
 
 public class ManagerModel {
 
-	ArrayList<Giochi> g = new ArrayList<>();	//TODO utilizzo arraylist per testare
-	ArrayList<GiocoVenduto>vend = new ArrayList<>();	//TODO utilizzo arraylist per testare
+	ArrayList<Giochi> g = new ArrayList<>();	//utilizzo arraylist per contenere i record
+	ArrayList<GiocoVenduto> vend = new ArrayList<>();
 	
 	
 	public ManagerModel() { //il costruttore legge i file
@@ -28,6 +30,12 @@ public class ManagerModel {
 		g.add(g1);
 		scritturaSuFileGiochi();
 	}
+	
+	
+	public void ordinaArrayGiochi(){
+		Collections.sort(g);
+	}
+	
 		
 	//aggiunge una quantita a un gioco scegliendo tra quantita di giochi usati o nuovi
 	public void aggiungiquantitagiochi(String nome, boolean nuovo, int quantita) {
@@ -56,7 +64,7 @@ public class ManagerModel {
 					g.get(i).setPrezzo_usato(nuovoprezzo);	//distinguendo tra nuovoe usato 
 				}
 			}
-		}	//TODO potremmo aggiungere un controllo nel caso in cui veda il file o meno
+		}	
 		scritturaSuFileGiochi();
 	}
 	

@@ -1,8 +1,8 @@
 package Manager_filiare;
 
-import java.util.Date;
-
 public class Main_manager {
+
+	private static int i;
 
 	public static void main(String[] args) {
 		ManagerModel cmodel = new ManagerModel();
@@ -10,6 +10,7 @@ public class Main_manager {
 		ManagerControl ccontrol = new ManagerControl(cview, cmodel);
 		cview.setVisible(true);
 		System.out.println("esecuzione");
+		
 	}
 	
 	
