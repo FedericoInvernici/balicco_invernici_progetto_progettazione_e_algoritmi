@@ -5,12 +5,10 @@ import java.util.Date;
 
 import javax.xml.crypto.Data;
 
-
-
-import Record.Giochi;
-import Record.GiocoPrenotato;
-import Record.GiocoVenduto;
-import Record.Iscritto;
+import record.Giochi;
+import record.GiocoPrenotato;
+import record.GiocoVenduto;
+import record.Iscritto;
 
 public class test {
 

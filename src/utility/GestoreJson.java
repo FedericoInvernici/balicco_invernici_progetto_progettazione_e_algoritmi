@@ -10,7 +10,7 @@ import org.json.simple.*; //Libreria per la gestione del formato JSON
 import org.json.simple.parser.JSONParser; // classe per il parsing di un file JSON
 import org.json.simple.parser.ParseException; //classe per la gestione di parsing
 
-import Record.Giochi;
+import record.Giochi;
 
 
 /*classe di collegamento con la libreria org.json  */
