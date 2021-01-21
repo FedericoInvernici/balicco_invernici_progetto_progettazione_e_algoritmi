@@ -39,7 +39,8 @@ public class DialogReport
 		       public void actionPerformed( ActionEvent e )  
 		       {
 		    	   	try {
-		    	   		if (!mesiText.getText().equals("") || !mesiText.getText().equals(s1)) 
+		    	   		if ((!mesiText.getText().equals("") || !mesiText.getText().equals(s1))&&
+		    	   				Integer.parseInt(mesiText.getText())>0) 
 		    	   		{
 		    	   			mm.reportdata(Integer.parseInt(mesiText.getText()));
 		    	   		}else{

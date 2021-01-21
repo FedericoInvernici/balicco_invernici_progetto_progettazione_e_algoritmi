@@ -42,7 +42,7 @@ public class DialogOrdina
 						//TODO
 		            	DialogOrdina.d.setVisible(false); 
 					}else{
-						String message="Devi prima scrivere una frase";
+						String message="Devi prima indicare il gioco da ordinare";
 						JOptionPane.showMessageDialog(new JFrame(), message, "Errore", JOptionPane.ERROR_MESSAGE);
 					}
 		       }  

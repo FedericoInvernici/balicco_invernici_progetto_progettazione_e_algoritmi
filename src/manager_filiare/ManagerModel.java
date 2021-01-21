@@ -80,7 +80,7 @@ public class ManagerModel {
 	
 	
 	//crea un report sui giochi venduti negli ultimi nmesi
-	public String reportdata(int nmesi) {	//lista di iochi venduti negli ultimi n mesi
+	public String reportdata(int nmesi) {	//lista di giochi venduti negli ultimi nmesi
 		//letturaDaFilePreo();
 		String testo_report="";
 		Date data_riferimento = new Date(System.currentTimeMillis());

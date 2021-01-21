@@ -29,7 +29,7 @@ public class CommessoModel {
 				if (nuovo) {					//e quando lo trova gli sostituisce il prezzo
 					return g.get(i).getPrezzo_nuovo();		//e quando lo trova gli sostituisce il prezzo
 				}else {
-					return g.get(i).getPrezzo_usato();	//distinguendo tra nuovoe usato 
+					return g.get(i).getPrezzo_usato();	//distinguendo tra nuovo e usato 
 				}
 			}
 		}
@@ -85,7 +85,7 @@ public class CommessoModel {
 							new Date(System.currentTimeMillis()), nuovo));
 					d=gtemp.getPrezzo_nuovo();
 				}else {
-					gtemp.quantitaUsatomenomeno();		//distinguendo tra nuovoe usato 
+					gtemp.quantitaUsatomenomeno();		//distinguendo tra nuovo e usato 
 					vend.add(new GiocoVenduto(gtemp.getNome(), gtemp.getPrezzo_nuovo(), 
 							new Date(System.currentTimeMillis()), nuovo));
 					d=gtemp.getPrezzo_usato();
@@ -139,7 +139,7 @@ public class CommessoModel {
 	
 	public void scritturaSuFileVend() {
 		GestoreJson js = new GestoreJson();
-		js.inserisci("GIOCHI", vend);
+		js.inserisci("GIOCHI VENDUTI", vend);
 		js.scritturaSuFile("FileVenduti.json");
 	}
 		
