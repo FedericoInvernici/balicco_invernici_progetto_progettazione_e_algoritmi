@@ -44,7 +44,7 @@ public class GiocoVenduto extends Gioco implements JSONAware{
 	public String toJSONString() {
 		String s;
 		s= "{\"Nome\":\"" + nome+"\", \"prezzo\":" + prezzo + ", \"anno\":" + data_vendita.getYear() +
-				", \"mese\":" + data_vendita.getMonth() + ", \"giorno\":" + data_vendita.getDay() +
+				", \"mese\":" + data_vendita.getMonth() + ", \"giorno\":" + data_vendita.getDate() +
 				", \"Nuovo\":" + nuovo + "}";
 		return s;
 	}

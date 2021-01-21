@@ -75,7 +75,6 @@ public class CommessoModel {
 	//metodo di quando un gioco viene venduto un gioco e che quindi ne diminuisce la quantita; se non ci sono 
 	//più copie (quantita == 0) restituisce false
 	public double vendita(String nome, boolean nuovo) {
-		System.out.println(nuovo);
 		Giochi gtemp;
 		Double d = 0.0;
 		int indice = RicercaInterpolata.TrovaElementoComp(g, new Giochi(nome, 0, 0, 0));

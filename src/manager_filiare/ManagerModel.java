@@ -81,21 +81,22 @@ public class ManagerModel {
 	
 	//crea un report sui giochi venduti negli ultimi nmesi
 	public String reportdata(int nmesi) {	//lista di giochi venduti negli ultimi nmesi
-		//letturaDaFilePreo();
-		String testo_report="";
-		Date data_riferimento = new Date(System.currentTimeMillis());
-		if (data_riferimento.getMonth()>12) {		//creo data_riferimento e lo imposto con la data di nmesi fa
-			int y = data_riferimento.getYear();
-			y = y - ((nmesi - (nmesi % 12))/12);
-			data_riferimento.setYear(y);
-			nmesi = nmesi % 12;
+		String testo_report=""; // Stringa che conterrà il report completo
+		int anniDiff = nmesi/12; 
+		int mesiDiff= nmesi-anniDiff*12;
+		Date data_riferimento = new Date(System.currentTimeMillis()); // costruisco una variabile di tipo data che indica il giorno nmesi fa
+		data_riferimento.setYear(data_riferimento.getYear()-anniDiff);
+		if(mesiDiff>data_riferimento.getMonth()) {
+			data_riferimento.setYear(data_riferimento.getYear()-1);
+			data_riferimento.setMonth(data_riferimento.getMonth()+12-mesiDiff);
+		} else {
+			data_riferimento.setMonth(data_riferimento.getMonth()-mesiDiff);
 		}
-		int m = data_riferimento.getMonth();
-		m = m - nmesi;
-		data_riferimento.setMonth(m);				//finisco di crearlo
+		System.out.println("Anno: "+ data_riferimento.getYear()+"  mese: "+ data_riferimento.getMonth());
 		
 		for (int i = 0; i < vend.size(); i++) {
-			if (data_riferimento.after (vend.get(i).getData_vendita())) {	//cerco i giochi venduti dopo la data_riferimento
+			if (!data_riferimento.after (vend.get(i).getData_vendita())) {	//cerco i giochi venduti dopo la data_riferimento
+				
 				testo_report = testo_report + " " + vend.get(i).getNome() + " " +
 						vend.get(i).getPrezzo() + "\n";
 			}

@@ -10,7 +10,6 @@ public class Main_manager {
 		ManagerControl ccontrol = new ManagerControl(cview, cmodel);
 		cview.setVisible(true);
 		System.out.println("esecuzione");
-		
 	}
 	
 	

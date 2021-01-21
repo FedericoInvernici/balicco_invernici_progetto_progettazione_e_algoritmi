@@ -2,6 +2,7 @@ package manager_dialog;
 
 import java.awt.BorderLayout;
 import java.awt.Dialog;
+import java.awt.TextArea;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -29,6 +30,7 @@ public class DialogReport
 	public DialogReport(ManagerModel m) {
 		   JFrame f= new JFrame();  
 		   mm = m;
+		   textArea.setEditable(false);
 		   mesiText.setEditable(true); 
 		   d = new JDialog(f , "Chiedi un report", true);
 		   d.setSize(700, 550);
@@ -40,15 +42,15 @@ public class DialogReport
 		       {
 		    	   	try {
 		    	   		if ((!mesiText.getText().equals("") || !mesiText.getText().equals(s1))&&
-		    	   				Integer.parseInt(mesiText.getText())>0) 
-		    	   		{
-		    	   			mm.reportdata(Integer.parseInt(mesiText.getText()));
+		    	   				Integer.parseInt(mesiText.getText())>0) {	
+		    	   			textArea.setText(mm.reportdata(Integer.parseInt(mesiText.getText())));
 		    	   		}else{
 		    	   			String message="Devi inserire i dati correttamente";
 		    	   			JOptionPane.showMessageDialog(new JFrame(),message,"Errore",JOptionPane.ERROR_MESSAGE);
 		    	   		}
 		    	 } catch (NumberFormatException e1) {
-		    		 System.out.println("Devi inserire i dati correttamente");
+		    		 String message="Devi inserire i dati correttamente";
+	    	   		 JOptionPane.showMessageDialog(new JFrame(),message,"Errore",JOptionPane.ERROR_MESSAGE);
 		    	 }
 		       }  
 		   });  
