@@ -29,7 +29,7 @@ public class CommessoModel {
 				if (nuovo) {					//e quando lo trova gli sostituisce il prezzo
 					return g.get(i).getPrezzo_nuovo();		//e quando lo trova gli sostituisce il prezzo
 				}else {
-					return g.get(i).getPrezzo_usato();	//distinguendo tra nuovoe usato 
+					return g.get(i).getPrezzo_usato();	//distinguendo tra nuovo e usato 
 				}
 			}
 		}
@@ -85,7 +85,7 @@ public class CommessoModel {
 							new Date(System.currentTimeMillis()), nuovo));
 					d=gtemp.getPrezzo_nuovo();
 				}else {
-					gtemp.quantitaUsatomenomeno();		//distinguendo tra nuovoe usato 
+					gtemp.quantitaUsatomenomeno();		//distinguendo tra nuovo e usato 
 					vend.add(new GiocoVenduto(gtemp.getNome(), gtemp.getPrezzo_nuovo(), 
 							new Date(System.currentTimeMillis()), nuovo));
 					d=gtemp.getPrezzo_usato();
@@ -123,7 +123,7 @@ public class CommessoModel {
 		
 	public void letturaDaFileGiochi() {
 		GestoreJson js = new GestoreJson();
-		js.letturaDaFileJSON("FileGiochi.json");
+		g= (ArrayList<Giochi>) js.letturaDaFileJSON("FileGiochi.json");
 	}
 	
 	public void scritturaSuFilePreo() {
@@ -134,18 +134,18 @@ public class CommessoModel {
 		
 	public void letturaDaFilePreo() {
 		GestoreJson js = new GestoreJson();
-		js.letturaDaFileJSON("FilePreordina.json");
+		preo = (ArrayList<GiocoPrenotato>) js.letturaDaFileJSON("FilePreordina.json");
 	}
 	
 	public void scritturaSuFileVend() {
 		GestoreJson js = new GestoreJson();
-		js.inserisci("GIOCHI", vend);
+		js.inserisci("GIOCHI VENDUTI", vend);
 		js.scritturaSuFile("FileVenduti.json");
 	}
 		
 	public void letturaDaFileVend() {
 		GestoreJson js = new GestoreJson();
-		js.letturaDaFileJSON("FileVenduti.json");
+		vend = (ArrayList<GiocoVenduto>) js.letturaDaFileJSON("FileVenduti.json");
 	}
 	
 	public void scritturaSuFileIscritti() {
@@ -156,7 +156,7 @@ public class CommessoModel {
 		
 	public void letturaDaFileIscritti() {
 		GestoreJson js = new GestoreJson();
-		js.letturaDaFileJSON("FileIscritti.json");
+		iscr = (ArrayList<Iscritto>) js.letturaDaFileJSON("FileIscritti.json");
 	}
 	
 }

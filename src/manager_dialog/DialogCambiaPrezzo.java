@@ -44,14 +44,16 @@ public class DialogCambiaPrezzo
 			public void actionPerformed( ActionEvent e )  
 			{  
 				try{
-					if (!nomegiocoText.getText().equals("") || !nomegiocoText.getText().equals(s1) ||
-						!prezzogiocoText.getText().equals("") || !prezzogiocoText.getText().equals(s2)) 
+					// verifico che il i dati siano inseriti e che il prezzo sia accettabile
+					if ((!nomegiocoText.getText().equals("") || !nomegiocoText.getText().equals(s1) ||
+						!prezzogiocoText.getText().equals("") || !prezzogiocoText.getText().equals(s2))&&
+							Float.parseFloat(prezzogiocoText.getText())>0) 
 					{
 					    mm.cambiaprezzo(nomegiocoText.getText(), true, 
 					    		Float.parseFloat(prezzogiocoText.getText())) ;
 						DialogCambiaPrezzo.d.setVisible(false); 
 					}else{
-						String message="Devi prima scrivere una frase";
+						String message="Inserisci i dati in modo corretto";
 						JOptionPane.showMessageDialog(new JFrame(), message, "Errore", JOptionPane.ERROR_MESSAGE);
 					}
 				} catch (NumberFormatException e1) {
@@ -67,14 +69,15 @@ public class DialogCambiaPrezzo
 			public void actionPerformed( ActionEvent e )  
 			{  
 				try{
-					if (!nomegiocoText.getText().equals("") || !nomegiocoText.getText().equals(s1) ||
-							!prezzogiocoText.getText().equals("") || !prezzogiocoText.getText().equals(s2)) 
+					if ((!nomegiocoText.getText().equals("") || !nomegiocoText.getText().equals(s1) ||
+							!prezzogiocoText.getText().equals("") || !prezzogiocoText.getText().equals(s2))
+							&& Float.parseFloat(prezzogiocoText.getText())>0)
 					{
 						mm.cambiaprezzo(nomegiocoText.getText(), false, 
 				    		Float.parseFloat(prezzogiocoText.getText())) ;
 						DialogCambiaPrezzo.d.setVisible(false); 
 					}else{
-						String message="Devi prima scrivere una frase";
+						String message="Inserisci i dati in modo corretto";
 						JOptionPane.showMessageDialog(new JFrame(), message, "Errore", JOptionPane.ERROR_MESSAGE);
 					}
 				} catch (NumberFormatException e1) {

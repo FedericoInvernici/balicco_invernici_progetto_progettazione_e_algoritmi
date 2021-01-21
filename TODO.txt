@@ -1,9 +1,14 @@
 Lista delle cose da fare (scriviamo a fianco chi lo sta facendo almeno non ci sovrapponiamo)
 
 Da fare (o controllare che siano presenti):
-- Controllare i dati in ingresso (ad esempio che un prezzo non sia negativo e le date siano accettabili) (Federico)
 - Implementare ricerca interpolata nel/nei metodo/i
 - Controllare che si possano aggiungere giochi prenotabili
-- Inserire ordinamento
 - Aggiungere commenti per migliorare la comprensibilità
+- Modificare metodo "ritira usato". Magari mettiamo una finestra pop up che dica "Conferma ritiro usato. Versare al cliente XX Euro"
+- Inserire controllo per la vendita. Risulta possibile comprare anche se la disponibilità è 0. Infatti poi nel file la disponibilità scende a -1. (Federico)
+- Magari mettiamo anche nella vendita un pop up che conferma l'avvenuta transazione.
+- Da inserire anche il pagamento in contanti oppure carta (quindi con una finta applicazione che comunichi con la banca)
+- Controllare il salvataggio della data quando si vende un gioco (viene salvato in un formato strano e quindi rende impossibile il report) (Federico)
+
+
 - Fare test di unità (alla fine del progetto)

@@ -20,7 +20,7 @@ public class ManagerModel {
 	
 	public ManagerModel() { //il costruttore legge i file
 		letturaDaFileGiochi();
-		letturaDaFilePreo();
+		letturaDaFileVend();
 	}
 	
 	
@@ -80,7 +80,7 @@ public class ManagerModel {
 	
 	
 	//crea un report sui giochi venduti negli ultimi nmesi
-	public String reportdata(int nmesi) {	//lista di iochi venduti negli ultimi n mesi
+	public String reportdata(int nmesi) {	//lista di giochi venduti negli ultimi nmesi
 		//letturaDaFilePreo();
 		String testo_report="";
 		Date data_riferimento = new Date(System.currentTimeMillis());
@@ -114,12 +114,12 @@ public class ManagerModel {
 	
 	public void letturaDaFileGiochi() { 
 		GestoreJson js = new GestoreJson();
-		js.letturaDaFileJSON("FileGiochi.json"); 
+		g=(ArrayList<Giochi>) js.letturaDaFileJSON("FileGiochi.json"); 
 	}
 	
-	public void letturaDaFilePreo() {
+	public void letturaDaFileVend() {
 		GestoreJson js = new GestoreJson();
-		js.letturaDaFileJSON("FileVenduti.json"); 
+		vend = (ArrayList<GiocoVenduto>) js.letturaDaFileJSON("FileVenduti.json"); 
 	}
 	
 	

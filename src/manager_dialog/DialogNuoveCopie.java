@@ -35,8 +35,10 @@ public class DialogNuoveCopie {
 		       public void actionPerformed( ActionEvent e )  
 		       {
 		    	   	try {
-		    	   		if (!nomegiocoText.getText().equals("") || !nomegiocoText.getText().equals(s1) ||
-		    	   				!quantitaText.getText().equals("") || !quantitaText.getText().equals(s2)) 
+		    	   		// verifico che il manager abbia effettivamente inserito i dati e che siano accettabili
+		    	   		if ((!nomegiocoText.getText().equals("") || !nomegiocoText.getText().equals(s1) ||
+		    	   				!quantitaText.getText().equals("") || !quantitaText.getText().equals(s2)) &&
+		    	   				Integer.parseInt(quantitaText.getText())>0)
 		    	   		{
 		    	   			mm.aggiungiquantitagiochi(nomegiocoText.getText(), true, 
 		    	   					Integer.parseInt(quantitaText.getText()));

@@ -43,9 +43,11 @@ public class DialogNuovoGioco
 		       public void actionPerformed( ActionEvent e )  
 		       {
 		    	   	try {
-		    	   		if (!nomegiocoText.getText().equals("") || !nomegiocoText.getText().equals(s1) ||
+		    	   		// verifico che il manager abbia effettivamente inserito i dati di un nuovo gioco e che siano accettabili
+		    	   		if ((!nomegiocoText.getText().equals("") || !nomegiocoText.getText().equals(s1) ||
 		    	   				!nuovoText.getText().equals("") || !nuovoText.getText().equals(s2) ||
-		    	   				!usatoText.getText().equals("") || !usatoText.getText().equals(s3) ) 
+		    	   				!usatoText.getText().equals("") || !usatoText.getText().equals(s3)) &&
+		    	   				(Float.parseFloat(nuovoText.getText())>0&&Float.parseFloat(usatoText.getText())>0)) 
 		    	   		{
 		    	   			mm.aggiungigiochi(nomegiocoText.getText(), 		//aggiunge un gioco nuovo
 		    	   					Float.parseFloat(nuovoText.getText()), 
