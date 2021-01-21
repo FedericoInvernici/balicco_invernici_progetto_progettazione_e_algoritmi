@@ -8,6 +8,7 @@ import record.GiocoPrenotato;
 import record.GiocoVenduto;
 import record.Iscritto;
 import utility.GestoreJson;
+import utility.RicercaInterpolata;
 
 public class CommessoModel {
 	
@@ -74,26 +75,26 @@ public class CommessoModel {
 	//metodo di quando un gioco viene venduto un gioco e che quindi ne diminuisce la quantita; se non ci sono 
 	//più copie (quantita == 0) restituisce false
 	public double vendita(String nome, boolean nuovo) {
+		System.out.println(nuovo);
 		Giochi gtemp;
-		Double d;
-		for (int i = 0; i < g.size(); i++) {			//TODO implementare qui
-			if (g.get(i).getNome().equals(nome)) {			//cerco tra i giochi quello col nome uguale	
-				gtemp = g.get(i);
-				if (nuovo) {
-					gtemp.quantitaNuovomenomeno();		//e quando lo trova gli sostituisce il prezzo
-					vend.add(new GiocoVenduto(gtemp.getNome(), gtemp.getPrezzo_nuovo(), 
-							new Date(System.currentTimeMillis()), nuovo));
-					d=gtemp.getPrezzo_nuovo();
-				}else {
-					gtemp.quantitaUsatomenomeno();		//distinguendo tra nuovo e usato 
-					vend.add(new GiocoVenduto(gtemp.getNome(), gtemp.getPrezzo_nuovo(), 
-							new Date(System.currentTimeMillis()), nuovo));
-					d=gtemp.getPrezzo_usato();
-				}
-				scritturaSuFileGiochi();
-				scritturaSuFileVend();
-				return d;
+		Double d = 0.0;
+		int indice = RicercaInterpolata.TrovaElementoComp(g, new Giochi(nome, 0, 0, 0));
+		if(indice>=0) {
+			gtemp=g.get(indice); //salvo il gioco trovato nella variabile temporanea gtemp
+			if(nuovo&&gtemp.getQuantita_nuovo()>0) {
+				gtemp.quantitaNuovomenomeno();
+				vend.add((new GiocoVenduto(gtemp.getNome(), gtemp.getPrezzo_nuovo(), 
+							new Date(System.currentTimeMillis()), nuovo)));
+				d=gtemp.getPrezzo_nuovo();
+			} else if (!nuovo&&gtemp.getQuantita_usato()>0) {
+				gtemp.quantitaUsatomenomeno(); //tolgo un'unità di prodotto usato al gioco trovato
+				vend.add(new GiocoVenduto(gtemp.getNome(), gtemp.getPrezzo_usato(), 
+						new Date(System.currentTimeMillis()), nuovo));
+				d=gtemp.getPrezzo_usato();
 			}
+			scritturaSuFileGiochi();
+			scritturaSuFileVend();
+			return d; //viene ritornato 0 se non vi sono prodotti in magazzino per rispondere alla vendità
 		}
 		return 0;
 	}

@@ -40,11 +40,11 @@ public class CommessoView extends JFrame {
 	
 	
 	void addAcqustanuovoListener(ActionListener m) {
-		acquistausatoButton.addActionListener(m);
+		acquistanuovoButton.addActionListener(m);
     }
 	
 	void addAcqustausatoListener(ActionListener m) {
-		acquistanuovoButton.addActionListener(m);
+		acquistausatoButton.addActionListener(m);
     }
 	
 	void addPreordinaListener(ActionListener m) {
