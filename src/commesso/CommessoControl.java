@@ -3,6 +3,9 @@ package commesso;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 import commeso_dialog.DialogIscrivi;
 import commeso_dialog.DialogPreordina1;
 import commeso_dialog.DialogPreordina2;
@@ -73,16 +76,22 @@ public class CommessoControl {
 	//prezzo e aumenta la quantità di usato di quel gioco 
 	class usato implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-        	String s;
+        	String s, dialog;
         	double prezzo;
         	s = cview.getNomegiocoText();
-        	prezzo = cmodel.ritirousato(s);
+        	prezzo= 0.7*cmodel.trovaprezzo(s, false); //cerco se il gioco è nel database e quindi può essere accettato
+        	//prezzo = cmodel.ritirousato(s);
         	if(prezzo==0){
-        		s="gioco non trovato";
+        		dialog= "Gioco inesistente nel database, non può essere accettato";
+        		JOptionPane.showMessageDialog(new JFrame(),dialog,"Errore",JOptionPane.ERROR_MESSAGE);
         	}else{
-        		s="Il gioco costa: " + prezzo;
+        		dialog="Gioco presente nel database. \n Il valore del gioco è: " + prezzo + " €\n Il cliente accetta l'importo?";
+        		int a = JOptionPane.showConfirmDialog(new JFrame(),dialog,"Conferma", JOptionPane.YES_NO_OPTION);
+            	if (a==0) {
+            		cmodel.ritirousato(s);
+            	}
         	}
-        	cview.setNomegiocoText(s);
+        	cview.setNomegiocoText("");
         }
 	}
 	

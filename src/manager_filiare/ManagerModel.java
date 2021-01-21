@@ -92,7 +92,6 @@ public class ManagerModel {
 		} else {
 			data_riferimento.setMonth(data_riferimento.getMonth()-mesiDiff);
 		}
-		System.out.println("Anno: "+ data_riferimento.getYear()+"  mese: "+ data_riferimento.getMonth());
 		
 		for (int i = 0; i < vend.size(); i++) {
 			if (!data_riferimento.after (vend.get(i).getData_vendita())) {	//cerco i giochi venduti dopo la data_riferimento
