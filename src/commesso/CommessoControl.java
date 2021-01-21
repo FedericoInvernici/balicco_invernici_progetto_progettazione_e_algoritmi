@@ -27,23 +27,35 @@ public class CommessoControl {
 		cview.addIscriviListener(new iscrivi());
 	}
 	
+	private boolean messaggioConfermaVendita(String nomeGioco, boolean nuovo) {
+		String dialog;
+		double prezzo = cmodel.trovaprezzo(nomeGioco, nuovo);
+		if(prezzo==0){ //gioco non presente nel database, messaggio di errore
+    		dialog= "Gioco inesistente nel database, non può essere comprato";
+    		JOptionPane.showMessageDialog(new JFrame(),dialog,"Errore",JOptionPane.ERROR_MESSAGE);
+    		return false;
+    	}else{ 
+    		//Il gioco è presente e si chiede al cliente se il costo va bene 
+    		dialog="Gioco presente nel database. \n Il costo del gioco è: " + prezzo + " €\n Il cliente accetta l'importo?";
+    		int a = JOptionPane.showConfirmDialog(new JFrame(),dialog,"Conferma", JOptionPane.YES_NO_OPTION); //Se viene schiacciato il tasto Sì, si ritorna il valore 0
+        	if (a==0)return true;
+        	else return false;
+    	}
+	}
 	
 	//metodi dei button
 	
-	//cerca il gioco sctritto nel campo text e se lo trova ne
+	//cerca il gioco scritto nel campo text e se lo trova ne
 	//restituisce il prezzo
 	class acquistanuovo implements ActionListener {
         public void actionPerformed(ActionEvent e) {
         	String s;
-        	double prezzo;
         	s = cview.getNomegiocoText();
-        	prezzo = cmodel.vendita(s, true);
-        	if(prezzo==0){
-        		s="Gioco non disponibile";
-        	}else{
-        		s="Il gioco " + s + " costa: " + prezzo;
+        	if(messaggioConfermaVendita(s, true)) {
+        		cmodel.vendita(s, true);
         	}
-        	cview.setNomegiocoText(s);
+
+        	cview.setNomegiocoText("");
         }
 	}
 	
@@ -51,15 +63,12 @@ public class CommessoControl {
 	class acquistausato implements ActionListener {
         public void actionPerformed(ActionEvent e) {
         	String s;
-        	double prezzo;
         	s = cview.getNomegiocoText();
-        	prezzo = cmodel.vendita(s, false);
-        	if(prezzo==0){
-        		s="Gioco non disponibile";
-        	}else{
-        		s="Il gioco " + s + " costa: " + prezzo;
+        	if(messaggioConfermaVendita(s, false)) {
+        		cmodel.vendita(s, false);
         	}
-        	cview.setNomegiocoText(s);
+
+        	cview.setNomegiocoText("");
         }
 	}
 	
@@ -80,13 +89,13 @@ public class CommessoControl {
         	double prezzo;
         	s = cview.getNomegiocoText();
         	prezzo= 0.7*cmodel.trovaprezzo(s, false); //cerco se il gioco è nel database e quindi può essere accettato
-        	//prezzo = cmodel.ritirousato(s);
-        	if(prezzo==0){
+        	if(prezzo==0){ //gioco non presente nel database, messaggio di errore
         		dialog= "Gioco inesistente nel database, non può essere accettato";
         		JOptionPane.showMessageDialog(new JFrame(),dialog,"Errore",JOptionPane.ERROR_MESSAGE);
-        	}else{
+        	}else{ 
+        		//Il gioco è presente e si chiede al cliente se l'importo offerto dal negozio è accettabile
         		dialog="Gioco presente nel database. \n Il valore del gioco è: " + prezzo + " €\n Il cliente accetta l'importo?";
-        		int a = JOptionPane.showConfirmDialog(new JFrame(),dialog,"Conferma", JOptionPane.YES_NO_OPTION);
+        		int a = JOptionPane.showConfirmDialog(new JFrame(),dialog,"Conferma", JOptionPane.YES_NO_OPTION); //Se viene schiacciato il tasto Sì, si ritorna il valore 0
             	if (a==0) {
             		cmodel.ritirousato(s);
             	}
