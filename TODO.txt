@@ -1,0 +1,9 @@
+Lista delle cose da fare (scriviamo a fianco chi lo sta facendo almeno non ci sovrapponiamo)
+
+Da fare (o controllare che siano presenti):
+- Controllare i dati in ingresso (ad esempio che un prezzo non sia negativo e le date siano accettabili) (Federico)
+- Implementare ricerca interpolata nel/nei metodo/i
+- Controllare che si possano aggiungere giochi prenotabili
+- Inserire ordinamento
+- Aggiungere commenti per migliorare la comprensibilità
+- Fare test di unità (alla fine del progetto)
