@@ -1,6 +1,5 @@
 package commesso;
 
-import utility.GestoreFile;
 import utility.GestoreJson;
 import utility.ValoreIntero; //interfaccia per la ricerca interpolata
 import utility.RicercaInterpolata;

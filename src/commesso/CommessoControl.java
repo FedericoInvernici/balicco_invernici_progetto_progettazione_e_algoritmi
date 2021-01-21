@@ -36,7 +36,7 @@ public class CommessoControl {
         	s = cview.getNomegiocoText();
         	prezzo = cmodel.vendita(s, true);
         	if(prezzo==0){
-        		s="gioco non trovato";
+        		s="Gioco non disponibile";
         	}else{
         		s="Il gioco " + s + " costa: " + prezzo;
         	}
@@ -50,9 +50,9 @@ public class CommessoControl {
         	String s;
         	double prezzo;
         	s = cview.getNomegiocoText();
-        	prezzo = cmodel.vendita(s, true);
+        	prezzo = cmodel.vendita(s, false);
         	if(prezzo==0){
-        		s="gioco non trovato";
+        		s="Gioco non disponibile";
         	}else{
         		s="Il gioco " + s + " costa: " + prezzo;
         	}

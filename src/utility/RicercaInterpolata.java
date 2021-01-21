@@ -1,6 +1,7 @@
 package utility;
 
 import java.lang.Math;
+import java.util.ArrayList;
 
 public class RicercaInterpolata {
 	
@@ -31,18 +32,18 @@ public class RicercaInterpolata {
 	 * Parametri: vett[] = vettore dove effettuare la ricerca
 	 			  elem = elemento da ricercare
 	 */
-	public static <T extends Comparable> boolean TrovaElementoComp(T vett[], T elem) {
-		return TrovaElementoCompInt(vett, elem, 0, vett.length-1);
+	public static <T extends Comparable> int TrovaElementoComp(ArrayList<T> vett, T elem) {
+		return TrovaElementoCompInt(vett, elem, 0, vett.size()-1);
 	}
 
 
-	private static <T extends Comparable> boolean TrovaElementoCompInt(T[] vett, T elem, int iniz, int fine) {
-		if(iniz==fine) return false; //previene la divisione per zero nel calcolo dell'indice
-		int indice= iniz + Math.round((fine-iniz)*((float)elem.compareTo(vett[iniz])/
-				(float)vett[fine].compareTo(vett[iniz])));
-		if(indice<iniz||indice>fine) return false;
-		else if(vett[indice].compareTo(elem)==0) return true;
-		else if(vett[indice].compareTo(elem)<0) return TrovaElementoCompInt(vett, elem, indice+1, fine);
+	private static <T extends Comparable> int TrovaElementoCompInt(ArrayList<T> vett, T elem, int iniz, int fine) {
+		if(iniz>=fine) return -1; //previene la divisione per zero nel calcolo dell'indice
+		int indice= iniz + Math.round((fine-iniz)*((float)elem.compareTo(vett.get(iniz))/
+				(float)vett.get(fine).compareTo(vett.get(iniz))));
+		if(indice<iniz||indice>fine) return -1;
+		else if(vett.get(indice).compareTo(elem)==0) return indice;
+		else if(vett.get(indice).compareTo(elem)<0) return TrovaElementoCompInt(vett, elem, indice+1, fine);
 		else return TrovaElementoCompInt(vett, elem, iniz, indice-1);	
 	}
 	

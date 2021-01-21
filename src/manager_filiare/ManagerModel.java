@@ -107,6 +107,7 @@ public class ManagerModel {
 	//METODI LETTURA SCRITTURA DA FILE
 	
 	public void scritturaSuFileGiochi() {
+		ordinaArrayGiochi();
 		GestoreJson js = new GestoreJson();
 		js.inserisci("GIOCHI", g);
 		js.scritturaSuFile("FileGiochi.json");

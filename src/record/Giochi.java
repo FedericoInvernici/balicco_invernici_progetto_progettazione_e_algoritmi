@@ -35,8 +35,8 @@ public class Giochi  implements JSONAware,Comparable{
 	// Costruttore a partire da un JSONObject (letto da file)
 	public Giochi(JSONObject jso) {
 		this.nome= (String) jso.get("nome");
-		this.prezzo_nuovo=(double) jso.get("p_usati");
-		this.prezzo_usato=(double) jso.get("p_nuovi");
+		this.prezzo_nuovo=(double) jso.get("p_nuovi");
+		this.prezzo_usato=(double) jso.get("p_usati");
 		this.quantita_nuovo= (int)(long)jso.get("q_nuovi");
 		this.quantita_usato=(int)(long) jso.get("q_usati");
 		this.quantita_preordinabile=(int)(long) jso.get("q_preordinabili");
@@ -60,6 +60,13 @@ public class Giochi  implements JSONAware,Comparable{
 	
 	public double getPrezzo_usato() {
 		return prezzo_usato;
+	}
+	
+	public int getQuantita_nuovo() {
+		return quantita_nuovo;
+	}
+	public int getQuantita_usato() {
+		return quantita_usato;
 	}
 	
 	public void aggiungiQnuovo(int q) {
