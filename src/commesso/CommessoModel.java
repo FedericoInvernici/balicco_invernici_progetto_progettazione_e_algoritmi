@@ -123,7 +123,7 @@ public class CommessoModel {
 		
 	public void letturaDaFileGiochi() {
 		GestoreJson js = new GestoreJson();
-		js.letturaDaFileJSON("FileGiochi.json");
+		g= (ArrayList<Giochi>) js.letturaDaFileJSON("FileGiochi.json");
 	}
 	
 	public void scritturaSuFilePreo() {
@@ -134,7 +134,7 @@ public class CommessoModel {
 		
 	public void letturaDaFilePreo() {
 		GestoreJson js = new GestoreJson();
-		js.letturaDaFileJSON("FilePreordina.json");
+		preo = (ArrayList<GiocoPrenotato>) js.letturaDaFileJSON("FilePreordina.json");
 	}
 	
 	public void scritturaSuFileVend() {
@@ -145,7 +145,7 @@ public class CommessoModel {
 		
 	public void letturaDaFileVend() {
 		GestoreJson js = new GestoreJson();
-		js.letturaDaFileJSON("FileVenduti.json");
+		vend = (ArrayList<GiocoVenduto>) js.letturaDaFileJSON("FileVenduti.json");
 	}
 	
 	public void scritturaSuFileIscritti() {
@@ -156,7 +156,7 @@ public class CommessoModel {
 		
 	public void letturaDaFileIscritti() {
 		GestoreJson js = new GestoreJson();
-		js.letturaDaFileJSON("FileIscritti.json");
+		iscr = (ArrayList<Iscritto>) js.letturaDaFileJSON("FileIscritti.json");
 	}
 	
 }

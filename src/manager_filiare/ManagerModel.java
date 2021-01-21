@@ -20,7 +20,7 @@ public class ManagerModel {
 	
 	public ManagerModel() { //il costruttore legge i file
 		letturaDaFileGiochi();
-		letturaDaFilePreo();
+		letturaDaFileVend();
 	}
 	
 	
@@ -114,12 +114,12 @@ public class ManagerModel {
 	
 	public void letturaDaFileGiochi() { 
 		GestoreJson js = new GestoreJson();
-		js.letturaDaFileJSON("FileGiochi.json"); 
+		g=(ArrayList<Giochi>) js.letturaDaFileJSON("FileGiochi.json"); 
 	}
 	
-	public void letturaDaFilePreo() {
+	public void letturaDaFileVend() {
 		GestoreJson js = new GestoreJson();
-		js.letturaDaFileJSON("FileVenduti.json"); 
+		vend = (ArrayList<GiocoVenduto>) js.letturaDaFileJSON("FileVenduti.json"); 
 	}
 	
 	
