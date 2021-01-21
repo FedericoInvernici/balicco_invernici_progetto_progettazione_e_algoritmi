@@ -2,8 +2,6 @@ Lista delle cose da fare (scriviamo a fianco chi lo sta facendo almeno non ci so
 
 Da fare (o controllare che siano presenti):
 - Controllare che si possano aggiungere giochi prenotabili
-- Modificare metodo "ritira usato". Magari mettiamo una finestra pop up che dica "Conferma ritiro usato. Versare al cliente XX Euro" (Federico)
-- Magari mettiamo anche nella vendita un pop up che conferma l'avvenuta transazione.
 - Da inserire anche il pagamento in contanti oppure carta (quindi con una finta applicazione che comunichi con la banca)
 - Verificare se è possibile ordinare i dati solo una volta (Ovvero quando si chiude l'applicazione del manager). Per migliorare le prestazioni.
 - Magari cambiare dimensioni di alcune interfacce (Per renderle più visibili in caso siano troppo piccoli i font)
