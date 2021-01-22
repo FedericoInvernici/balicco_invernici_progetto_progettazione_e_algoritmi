@@ -1,4 +1,4 @@
-package commeso_dialog;
+package commesso_dialog;
 
 import java.text.SimpleDateFormat;
 import java.awt.BorderLayout;

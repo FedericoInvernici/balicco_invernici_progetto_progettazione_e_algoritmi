@@ -98,6 +98,15 @@ public class CommessoModel {
 		return 0;
 	}
 	
+	public boolean verificaDisponibilita(String nome, boolean nuovo) {
+		int indice = RicercaInterpolata.TrovaElementoComp(g, new Giochi(nome, 0, 0, 0));
+		if(indice<0) return false;
+		else {
+			if(nuovo&&g.get(indice).getQuantita_nuovo()>0)return true;
+			else if (!nuovo&&g.get(indice).getQuantita_usato()>0) return true;
+			else return false;
+		}
+	}
 	
 	
 	public void iscrivi(String nome, String cognome, String email) {

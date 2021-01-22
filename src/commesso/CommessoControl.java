@@ -6,9 +6,10 @@ import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-import commeso_dialog.DialogIscrivi;
-import commeso_dialog.DialogPreordina1;
-import commeso_dialog.DialogPreordina2;
+import commesso_dialog.DialogIscrivi;
+import commesso_dialog.DialogPreordina1;
+import commesso_dialog.DialogPreordina2;
+import commesso_dialog.DialogVendita;
 
 
 public class CommessoControl {
@@ -20,14 +21,13 @@ public class CommessoControl {
 		cview=cv;
 		cmodel=cm;
 		cview.addAcqustanuovoListener(new acquistanuovo());
-		cview.addAcqustausatoListener(new acquistausato());
 		cview.addPreordinaListener(new preordina());
 		cview.addUsatoListener(new usato());
 		cview.addPrezzoListener(new prezzo());
 		cview.addIscriviListener(new iscrivi());
 	}
 	
-	private boolean messaggioConfermaVendita(String nomeGioco, boolean nuovo) {
+	public boolean messaggioConfermaVendita(String nomeGioco, boolean nuovo) {
 		String dialog;
 		double prezzo = cmodel.trovaprezzo(nomeGioco, nuovo);
 		if(prezzo==0){ //gioco non presente nel database, messaggio di errore
@@ -49,13 +49,14 @@ public class CommessoControl {
 	//restituisce il prezzo
 	class acquistanuovo implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-        	String s;
+        	new DialogVendita(cmodel);
+        	/*String s;
         	s = cview.getNomegiocoText();
         	if(messaggioConfermaVendita(s, true)) {
         		cmodel.vendita(s, true);
         	}
 
-        	cview.setNomegiocoText("");
+        	cview.setNomegiocoText("");*/
         }
 	}
 	
@@ -73,7 +74,7 @@ public class CommessoControl {
 	}
 	
 	
-	//crea la queri per la prenotazione dei giochi
+	//crea la query per la prenotazione dei giochi
 	class preordina implements ActionListener {
         public void actionPerformed(ActionEvent e) {
         	new DialogPreordina1(cmodel);	
