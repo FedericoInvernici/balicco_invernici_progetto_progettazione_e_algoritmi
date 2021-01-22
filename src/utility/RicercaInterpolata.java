@@ -27,10 +27,11 @@ public class RicercaInterpolata {
 		else return false;		
 	}
 	
-	/* Metodo richiamabile per la ricerca in un vettore di oggetti che implementano l'interfaccia "Comperable".
-	 * Pensato per la ricerca con le Stringhe
-	 * Parametri: vett[] = vettore dove effettuare la ricerca
+	/* Metodo richiamabile per la ricerca in un vettore di oggetti che implementano l'interfaccia "Comparable".
+	 * Pensato soprattutto per la ricerca con le Stringhe
+	 * Parametri: vett = ArrayList dove effettuare la ricerca
 	 			  elem = elemento da ricercare
+	   Viene restituito l'indice dell'elemento se presente nell'ArrayList, altrimenti viene restituito -1		  
 	 */
 	public static <T extends Comparable> int TrovaElementoComp(ArrayList<T> vett, T elem) {
 		return TrovaElementoCompInt(vett, elem, 0, vett.size()-1);

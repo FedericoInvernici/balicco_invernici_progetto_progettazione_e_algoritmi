@@ -1,4 +1,4 @@
-package commeso_dialog;
+package commesso_dialog;
 
 import java.awt.BorderLayout;
 import java.awt.Dialog;

@@ -12,8 +12,7 @@ import javax.swing.JTextField;
 public class CommessoView extends JFrame {
 	
     private JTextField nomegiocoText     	= new JTextField(30);
-    private JButton    acquistanuovoButton 	= new JButton("Acquista gioco nuovo"); 
-    private JButton    acquistausatoButton 	= new JButton("Acquista gioco usato");
+    private JButton    acquistanuovoButton 	= new JButton("Acquista gioco"); 
     private JButton    preordinaButton   	= new JButton("Preordina gioco"); 
     private JButton    usatoButton    	 	= new JButton("Ritira usato");
     private JButton    prezzoButton      	= new JButton("Trova il prezzo"); 
@@ -27,7 +26,6 @@ public class CommessoView extends JFrame {
 		content.setLayout(new FlowLayout()); 
         content.add(nomegiocoText);
         content.add(acquistanuovoButton);
-        content.add(acquistausatoButton);
         content.add(preordinaButton);
         content.add(usatoButton);
         content.add(prezzoButton);
@@ -41,10 +39,6 @@ public class CommessoView extends JFrame {
 	
 	void addAcqustanuovoListener(ActionListener m) {
 		acquistanuovoButton.addActionListener(m);
-    }
-	
-	void addAcqustausatoListener(ActionListener m) {
-		acquistausatoButton.addActionListener(m);
     }
 	
 	void addPreordinaListener(ActionListener m) {
