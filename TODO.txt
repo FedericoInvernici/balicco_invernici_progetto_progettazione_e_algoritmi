@@ -4,7 +4,6 @@ Da fare (o controllare che siano presenti):
 - Controllare che si possano aggiungere giochi prenotabili
 - Verificare se è possibile ordinare i dati solo una volta (Ovvero quando si chiude l'applicazione del manager). Per migliorare le prestazioni.
 - Magari cambiare dimensioni di alcune interfacce (Per renderle più visibili in caso siano troppo piccoli i font)
-- Nel metodo ordina (per il magazzino) magari inseriamo un modo per indicare anche la quantità di merce necessaria, che poi quel numero finisce nelle applicazioni finte di gestione del magazzino
-
+- Controllare metodo prenota gioco
 
 - Fare test di unità (alla fine del progetto)

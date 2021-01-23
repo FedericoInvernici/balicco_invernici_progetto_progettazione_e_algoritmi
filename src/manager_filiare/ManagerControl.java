@@ -17,7 +17,7 @@ import javax.swing.JTextField;
 import manager_dialog.DialogCambiaPrezzo;
 import manager_dialog.DialogNuoveCopie;
 import manager_dialog.DialogNuovoGioco;
-import manager_dialog.DialogOrdina;
+import manager_dialog.DialogOrd;
 import manager_dialog.DialogReport;
 
 
@@ -40,7 +40,8 @@ public class ManagerControl {
 	//metodi dei button
 	class ordina implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-        	new DialogOrdina(mmodel);
+        	//new DialogOrdina(mmodel);
+        	new DialogOrd(mmodel);
         }
 	}
 	

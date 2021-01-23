@@ -36,6 +36,11 @@ public class ManagerModel {
 		Collections.sort(g);
 	}
 	
+	//metodo per verificare che un gioco intitolato come la stringa in "nomeGioco" sia presente nell'elenco
+	public boolean cercaGioco(String nomeGioco) {
+		return g.contains(new Giochi(nomeGioco, 0, 0, 0));
+	}
+	
 		
 	//aggiunge una quantita a un gioco scegliendo tra quantita di giochi usati o nuovi
 	public void aggiungiquantitagiochi(String nome, boolean nuovo, int quantita) {
