@@ -23,6 +23,7 @@ public class ManagerView extends JFrame {
 	private JButton    nuovogiocoButton   = new JButton("Aggiungi un nuovo gioco"); 
 	private JButton    nuovacopiaButton    	 = new JButton("Aggiungi una nuova copia di un gioco");
 	private JButton    vendiButton    	 = new JButton("Vendi un gioco");
+	private JButton 	nuovoprenotabileButton = new JButton("Aggiungi gioco prenotabile");
 	private ManagerModel mmodel;
 	
 	public ManagerView(ManagerModel m) {
@@ -35,6 +36,7 @@ public class ManagerView extends JFrame {
         content.add(reportButton);
         content.add(nuovogiocoButton);
         content.add(nuovacopiaButton);
+        content.add(nuovoprenotabileButton);
         this.setContentPane(content);
         this.pack();
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -62,6 +64,10 @@ public class ManagerView extends JFrame {
 	
 	void addNuovaCopiaListener(ActionListener m) {
 		nuovacopiaButton.addActionListener(m);
+    }
+	
+	void addNuovoGiocoPrenotabileListener(ActionListener m) {
+		nuovoprenotabileButton.addActionListener(m);
     }
 		
 }

@@ -1,6 +1,7 @@
 package record;
 
 import java.lang.reflect.Constructor;
+import java.util.Date;
 
 import org.json.simple.JSONAware;
 import org.json.simple.JSONObject;
@@ -15,6 +16,7 @@ public class Giochi  implements JSONAware,Comparable{
 	int quantita_nuovo;
 	int quantita_usato;
 	int quantita_preordinabile;
+	Date dataUscita; //diverso da 0 solo se il gioco non è ancora uscito
 	
 	public Giochi(String nome, Double prezzo_nuovo, Double prezzo_usato, int qnuovo, int qusato, int qprenotable) {
 		this.nome=nome;
@@ -24,6 +26,7 @@ public class Giochi  implements JSONAware,Comparable{
 		this.quantita_usato=qusato;
 		this.quantita_preordinabile=qprenotable;
 	}
+	
 
 	public Giochi(String string, int i, int j, int k) {
 		this.nome=string;
@@ -40,6 +43,10 @@ public class Giochi  implements JSONAware,Comparable{
 		this.quantita_nuovo= (int)(long)jso.get("q_nuovi");
 		this.quantita_usato=(int)(long) jso.get("q_usati");
 		this.quantita_preordinabile=(int)(long) jso.get("q_preordinabili");
+	}
+	
+	public void setDataUscita(String giorno, String mese, String anno) {
+		this.dataUscita=new Date(Integer.parseInt(anno),Integer.parseInt(mese),Integer.parseInt(giorno));
 	}
 
 	public String getNome() {
@@ -95,7 +102,7 @@ public class Giochi  implements JSONAware,Comparable{
 	public String toJSONString() {
 		String s;
 		s= "{\"nome\":\"" + nome+"\", \"p_nuovi\":" + prezzo_nuovo + ", \"p_usati\":" + prezzo_usato + ", \"q_nuovi\":" + quantita_nuovo +
-				", \"q_usati\":" + quantita_usato + ", \"q_preordinabili\":" + quantita_preordinabile+"}";
+				", \"q_usati\":" + quantita_usato + ", \"q_preordinabili\":" + quantita_preordinabile+ "}";
 		return s;
 	}
 	

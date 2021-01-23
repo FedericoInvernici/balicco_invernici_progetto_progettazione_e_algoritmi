@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import manager_dialog.DialogAggiungiPrenotabili;
 import manager_dialog.DialogCambiaPrezzo;
 import manager_dialog.DialogNuoveCopie;
 import manager_dialog.DialogNuovoGioco;
@@ -34,6 +35,7 @@ public class ManagerControl {
 		mview.addReportListener(new report());
 		mview.addNuovoGiocoListener(new nuovogioco());
 		mview.addNuovaCopiaListener(new nuovacopia());
+		mview.addNuovoGiocoPrenotabileListener(new nuovogiocoprenotabile());
 	}
 	
 	
@@ -71,11 +73,11 @@ public class ManagerControl {
         }
 	}
 	
-	
-	
-	
-	
-	
+	class nuovogiocoprenotabile implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+        	new DialogAggiungiPrenotabili(mmodel);
+        }
+	}
 	
 	
 }

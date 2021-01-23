@@ -39,28 +39,11 @@ public class DialogVendita {
 	String nomeGioco;
 
 
-	/*public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					DialogVendita window = new DialogVendita();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}*/
-
-
 	public DialogVendita(CommessoModel cm) {
 		this.cm=cm;
 		initialize();
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 614, 402);
