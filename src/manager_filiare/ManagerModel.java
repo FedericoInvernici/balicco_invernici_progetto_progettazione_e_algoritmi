@@ -31,6 +31,18 @@ public class ManagerModel {
 		scritturaSuFileGiochi();
 	}
 	
+	public boolean aggiungiGiochiPrenotabili(String giocoPrenotabile, String anno, String mese, String giorno, double prezzoUscita, int quantita) {
+		//Aggiungo solo se non è già presente nel database un gioco con lo stesso nome
+		Date dataUscita = new Date(Integer.parseInt(anno),Integer.parseInt(mese)-1,Integer.parseInt(giorno));
+		if(!cercaGioco(giocoPrenotabile)&&dataUscita.after(new Date(System.currentTimeMillis()))){
+			Giochi g1 = new Giochi(giocoPrenotabile, prezzoUscita, 0.0, 0, 0, quantita);
+			g1.setDataUscita(giorno, mese, anno);
+			g.add(g1);
+			scritturaSuFileGiochi();
+			return true;
+		}
+		return false;
+	}
 	
 	public void ordinaArrayGiochi(){
 		Collections.sort(g);
