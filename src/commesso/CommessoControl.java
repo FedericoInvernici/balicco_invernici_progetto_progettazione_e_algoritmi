@@ -20,13 +20,13 @@ public class CommessoControl {
 	public CommessoControl(CommessoView cv, CommessoModel cm) {
 		cview=cv;
 		cmodel=cm;
-		cview.addAcqustanuovoListener(new acquistanuovo());
+		cview.addAcqustanuovoListener(new Acquista());
 		cview.addPreordinaListener(new preordina());
 		cview.addUsatoListener(new usato());
 		cview.addPrezzoListener(new prezzo());
 		cview.addIscriviListener(new iscrivi());
 	}
-	
+	/*
 	public boolean messaggioConfermaVendita(String nomeGioco, boolean nuovo) {
 		String dialog;
 		double prezzo = cmodel.trovaprezzo(nomeGioco, nuovo);
@@ -41,39 +41,18 @@ public class CommessoControl {
         	if (a==0)return true;
         	else return false;
     	}
-	}
+	}*/
 	
 	//metodi dei button
 	
-	//cerca il gioco scritto nel campo text e se lo trova ne
-	//restituisce il prezzo
-	class acquistanuovo implements ActionListener {
+	//Gestione pressione tasto "Acquista Gioco"
+	class Acquista implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-        	new DialogVendita(cmodel);
-        	/*String s;
-        	s = cview.getNomegiocoText();
-        	if(messaggioConfermaVendita(s, true)) {
-        		cmodel.vendita(s, true);
-        	}
-
-        	cview.setNomegiocoText("");*/
+        	new DialogVendita(cmodel); // richiamo il dialog per la vendita di giochi nuovi e usati
         }
 	}
 	
-	//uguale al metodo sopra, ma per i giochi usati
-	class acquistausato implements ActionListener {
-        public void actionPerformed(ActionEvent e) {
-        	String s;
-        	s = cview.getNomegiocoText();
-        	if(messaggioConfermaVendita(s, false)) {
-        		cmodel.vendita(s, false);
-        	}
-
-        	cview.setNomegiocoText("");
-        }
-	}
-	
-	
+		
 	//crea la query per la prenotazione dei giochi
 	class preordina implements ActionListener {
         public void actionPerformed(ActionEvent e) {

@@ -102,6 +102,11 @@ public class Giochi  implements JSONAware,Comparable{
 	public int compareTo(Object o){
 		return this.getNome().compareTo(((Giochi) o).getNome());
 	}
+	
+	public boolean equals(Object o) {
+		if (o instanceof Giochi&&this.getNome().equals(((Giochi)o).getNome())) return true;
+		else return false;
+	}
 
 	
 	
