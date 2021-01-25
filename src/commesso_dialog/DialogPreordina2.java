@@ -23,13 +23,15 @@ public class DialogPreordina2 {
 	JTextField emailText = new JTextField(s2);
 	JButton bprocedi = new JButton("Procedi");
 	CommessoModel cm;
+	String nomeGioco;
 		 
-	public DialogPreordina2(CommessoModel m) {
+	public DialogPreordina2(CommessoModel m, String nomeGioco) {
 		   JFrame f= new JFrame();  
+		   this.nomeGioco=nomeGioco;
 		   cm = m;
 		   nomeText.setEditable(true);
 		   emailText.setEditable(true);
-		   d = new JDialog(f , "Iscrivi il gioco da prenotare", true);
+		   d = new JDialog(f , "Dettagli clienta per conferma prenotazione", true);
 		   d.setSize(400, 120);
 		   d.setLocation(450, 240);
 				
@@ -40,7 +42,8 @@ public class DialogPreordina2 {
 		    	   	if (!nomeText.getText().equals("") || !nomeText.getText().equals(s1) ||
 		    	   			!emailText.getText().equals("") || !emailText.getText().equals(s2)) 
 		    	   	{
-		    	   		cm.preordinaultimocliete(nomeText.getText(), emailText.getText());  
+		    	   		cm.aggiungiPreordine(nomeGioco, emailText.getText(), nomeText.getText());
+		    	   		JOptionPane.showMessageDialog(new JFrame(),"Prenotazione confermata","Conferma",1);
 						DialogPreordina2.d.setVisible(false); 
 		    	   	}else{
 		    	   		String message="Devi inserire i dati correttamente1";

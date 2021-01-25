@@ -62,15 +62,36 @@ public class CommessoModel {
 		scritturaSuFilePreo();
 	}
 	public void preordinaultimocliete(String email, String cliente){			 
-		GiocoPrenotato g;
-		g = preo.get(preo.size()-1);
-		g.setNome_cliente(cliente);
-		g.setEmail_cliente(email);
-		preo.set(preo.size()-1,g);
+		GiocoPrenotato gp;
+		gp = preo.get(preo.size()-1);
+		gp.setNome_cliente(cliente);
+		gp.setEmail_cliente(email);
+		preo.set(preo.size()-1,gp);
 		scritturaSuFilePreo();
+
 	}
 	
 	
+	public void aggiungiPreordine(String nome, String email, String cliente) {
+		Double prezzo;
+		Date d;
+		int indice = RicercaInterpolata.TrovaElementoComp(g, new Giochi(nome, 0, 0, 0));
+		if(indice>=0) {
+			prezzo=g.get(indice).getPrezzo_nuovo();
+			d=g.get(indice).getDataUscita();
+			g.get(indice).setQuantitaDisponibilePreoMenoMeno();
+			preordina(nome, prezzo, d, email, cliente);
+			scritturaSuFileGiochi();
+			return;
+		}
+		
+	}
+	
+	public boolean verificaDisponibilitaPreo(String nome) {
+		int indice = RicercaInterpolata.TrovaElementoComp(g, new Giochi(nome, 0, 0, 0)); // trovo il gioco se esiste
+		if(indice>=0&&g.get(indice).getQuantita_preo()>0) return true; // se il gioco viene trovato nel database e la disponibilità è almeno uno ritorno true
+		return false;
+	}
 	
 	//metodo di quando un gioco viene venduto un gioco e che quindi ne diminuisce la quantita; se non ci sono 
 	//più copie (quantita == 0) restituisce false
@@ -159,7 +180,7 @@ public class CommessoModel {
 	
 	public void scritturaSuFileIscritti() {
 		GestoreJson js = new GestoreJson();
-		js.inserisci("GIOCHI", iscr);
+		js.inserisci("ISCRITTI", iscr);
 		js.scritturaSuFile("FileIscritti.json");
 	}
 		

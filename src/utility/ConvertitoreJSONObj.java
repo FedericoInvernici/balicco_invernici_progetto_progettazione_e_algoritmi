@@ -38,6 +38,7 @@ public class ConvertitoreJSONObj {
 	private static ArrayList<?> convertiGiochi(JSONObject vett){
 		JSONArray vetDiDati = (JSONArray) vett.get("GIOCHI"); 
 		ArrayList<Giochi> listaGiochi = new ArrayList<Giochi>();
+		if (vetDiDati==null) return listaGiochi;
 		for(Object o:vetDiDati) {
 			listaGiochi.add(new Giochi((JSONObject)o));
 		}
