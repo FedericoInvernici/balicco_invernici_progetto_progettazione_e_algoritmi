@@ -31,12 +31,19 @@ public class ManagerModel {
 		scritturaSuFileGiochi();
 	}
 	
+	/*
+	 * Verifica che il gioco descritto dai parametri è accettabile e in caso lo aggiunge al database e restituisce true,
+	 * altrimenti viene restituito false
+	 */
 	public boolean aggiungiGiochiPrenotabili(String giocoPrenotabile, String anno, String mese, String giorno, double prezzoUscita, int quantita) {
 		//Aggiungo solo se non è già presente nel database un gioco con lo stesso nome
-		Date dataUscita = new Date(Integer.parseInt(anno),Integer.parseInt(mese)-1,Integer.parseInt(giorno));
+		int annoIntero = Integer.parseInt(anno)-1900; // Gli anni nel formato Date partono dal 1900
+		Date dataUscita = new Date(annoIntero,Integer.parseInt(mese)-1,Integer.parseInt(giorno));
+		
+		//Verifico che il gioco esca in una data seguente al giorno odierno e non sia già presente a database
 		if(!cercaGioco(giocoPrenotabile)&&dataUscita.after(new Date(System.currentTimeMillis()))){
 			Giochi g1 = new Giochi(giocoPrenotabile, prezzoUscita, 0.0, 0, 0, quantita);
-			g1.setDataUscita(giorno, mese, anno);
+			g1.setDataUscita(giorno, mese, Integer.toString(annoIntero));
 			g.add(g1);
 			scritturaSuFileGiochi();
 			return true;
@@ -47,6 +54,7 @@ public class ManagerModel {
 	public void ordinaArrayGiochi(){
 		Collections.sort(g);
 	}
+	
 	
 	//metodo per verificare che un gioco intitolato come la stringa in "nomeGioco" sia presente nell'elenco
 	public boolean cercaGioco(String nomeGioco) {

@@ -25,6 +25,7 @@ public class Giochi  implements JSONAware,Comparable{
 		this.quantita_nuovo=qnuovo;
 		this.quantita_usato=qusato;
 		this.quantita_preordinabile=qprenotable;
+		dataUscita=new Date();
 	}
 	
 
@@ -43,6 +44,7 @@ public class Giochi  implements JSONAware,Comparable{
 		this.quantita_nuovo= (int)(long)jso.get("q_nuovi");
 		this.quantita_usato=(int)(long) jso.get("q_usati");
 		this.quantita_preordinabile=(int)(long) jso.get("q_preordinabili");
+		this.dataUscita= new Date((int)(long) jso.get("anno"),(int)(long) jso.get("mese"),(int)(long) jso.get("giorno"));
 	}
 	
 	public void setDataUscita(String giorno, String mese, String anno) {
@@ -76,6 +78,16 @@ public class Giochi  implements JSONAware,Comparable{
 		return quantita_usato;
 	}
 	
+	public int getQuantita_preo() {
+		return quantita_preordinabile;
+	}
+	public Date getDataUscita() {
+		return dataUscita;
+	}
+	public void setQuantitaDisponibilePreoMenoMeno() {
+		this.quantita_preordinabile--;
+	}
+	
 	public void aggiungiQnuovo(int q) {
 		this.quantita_nuovo=this.quantita_nuovo+q;
 	}
@@ -102,7 +114,8 @@ public class Giochi  implements JSONAware,Comparable{
 	public String toJSONString() {
 		String s;
 		s= "{\"nome\":\"" + nome+"\", \"p_nuovi\":" + prezzo_nuovo + ", \"p_usati\":" + prezzo_usato + ", \"q_nuovi\":" + quantita_nuovo +
-				", \"q_usati\":" + quantita_usato + ", \"q_preordinabili\":" + quantita_preordinabile+ "}";
+				", \"q_usati\":" + quantita_usato + ", \"q_preordinabili\":" + quantita_preordinabile+ ", \"anno\":" + dataUscita.getYear() +
+				", \"mese\":" + dataUscita.getMonth() + ", \"giorno\":" + dataUscita.getDate()+"}";
 		return s;
 	}
 	

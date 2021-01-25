@@ -152,11 +152,15 @@ public class DialogAggiungiPrenotabili {
 					disp = (int) (double)quantitaDisponibile.getValue();
 					try {
 						prezzoUscita = Double.parseDouble(campoPrezzo.getText());
-						testoEsito.setText("Gioco inserito correttamente:" + nomeGioco +"\nNumero copie disponibili al lancio: "+ disp +"\nPrezzo al lancio: " + prezzoUscita);
+						if(mm.aggiungiGiochiPrenotabili(nomeGioco, annoUscita, meseUscita, giornoUscita, prezzoUscita, disp)) {
+							testoEsito.setText("Gioco inserito correttamente:" + nomeGioco +"\nNumero copie disponibili al lancio: "+ disp +"\nPrezzo al lancio: " + prezzoUscita);
+						} else { //Se non è possibile inserire il gioco, viene comunicato che i dati non sono corretti
+							throw new Exception();
+						}
 					}catch (Exception ecc) {
 						testoEsito.setText("Inserire i dati in modo corretto");
 					}
-					//if(mm.aggiungiGiochiPrenotabili(nomeGioco, annoUscita, meseUscita, giornoUscita, prezzoUscita, disp))					
+										
 				}else {
 					testoEsito.setText("Inserire i dati in modo corretto");
 				}

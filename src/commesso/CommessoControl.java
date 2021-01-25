@@ -26,22 +26,6 @@ public class CommessoControl {
 		cview.addPrezzoListener(new prezzo());
 		cview.addIscriviListener(new iscrivi());
 	}
-	/*
-	public boolean messaggioConfermaVendita(String nomeGioco, boolean nuovo) {
-		String dialog;
-		double prezzo = cmodel.trovaprezzo(nomeGioco, nuovo);
-		if(prezzo==0){ //gioco non presente nel database, messaggio di errore
-    		dialog= "Gioco inesistente nel database, non può essere comprato";
-    		JOptionPane.showMessageDialog(new JFrame(),dialog,"Errore",JOptionPane.ERROR_MESSAGE);
-    		return false;
-    	}else{ 
-    		//Il gioco è presente e si chiede al cliente se il costo va bene 
-    		dialog="Gioco presente nel database. \n Il costo del gioco è: " + prezzo + " €\n Il cliente accetta l'importo?";
-    		int a = JOptionPane.showConfirmDialog(new JFrame(),dialog,"Conferma", JOptionPane.YES_NO_OPTION); //Se viene schiacciato il tasto Sì, si ritorna il valore 0
-        	if (a==0)return true;
-        	else return false;
-    	}
-	}*/
 	
 	//metodi dei button
 	
@@ -57,7 +41,6 @@ public class CommessoControl {
 	class preordina implements ActionListener {
         public void actionPerformed(ActionEvent e) {
         	new DialogPreordina1(cmodel);	
-        	new DialogPreordina2(cmodel);
         }
 	}
 	
@@ -84,7 +67,7 @@ public class CommessoControl {
         }
 	}
 	
-	//restituisce il prezo del gioco col nome nel campo text
+	//restituisce il prezzo del gioco col nome nel campo text
 	class prezzo implements ActionListener {
         public void actionPerformed(ActionEvent e) {
         	String s;
