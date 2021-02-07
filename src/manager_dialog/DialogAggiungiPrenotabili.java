@@ -8,7 +8,7 @@ import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 
-import manager_filiare.ManagerModel;
+import manager_filiale.ManagerModel;
 
 import javax.swing.JSpinner;
 import javax.swing.JComboBox;

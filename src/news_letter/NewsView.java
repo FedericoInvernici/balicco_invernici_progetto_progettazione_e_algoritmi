@@ -17,7 +17,7 @@ public class NewsView extends JFrame {
 
 	JTextArea textArea 					 = new JTextArea(10, 20);
 	JScrollPane scroll 					 = new JScrollPane (textArea);
-    private JButton    sendButton	 	 = new JButton("invia newsletter");
+    private JButton    sendButton	 	 = new JButton("Invia newsletter");
 	private NewsModel nmodel;
     
 	public NewsView (NewsModel n)

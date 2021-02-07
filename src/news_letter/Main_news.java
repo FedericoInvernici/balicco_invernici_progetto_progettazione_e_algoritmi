@@ -1,8 +1,8 @@
 package news_letter;
 
-import manager_filiare.ManagerControl;
-import manager_filiare.ManagerModel;
-import manager_filiare.ManagerView;
+import manager_filiale.ManagerControl;
+import manager_filiale.ManagerModel;
+import manager_filiale.ManagerView;
 
 public class Main_news {
 

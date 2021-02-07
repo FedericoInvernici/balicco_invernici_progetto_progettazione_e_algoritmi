@@ -11,7 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-import manager_filiare.ManagerModel;
+import manager_filiale.ManagerModel;
 
 public class DialogNuoveCopie {
 	private static Dialog d;

@@ -1,4 +1,4 @@
-package manager_filiare;
+package manager_filiale;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -51,6 +51,7 @@ public class ManagerModel {
 		return false;
 	}
 	
+	//Metodo per la delegazione dell'ordinamento dell'ArrayList Giochi al metodo sort di Collections
 	public void ordinaArrayGiochi(){
 		Collections.sort(g);
 	}
@@ -62,7 +63,7 @@ public class ManagerModel {
 	}
 	
 		
-	//aggiunge una quantita a un gioco scegliendo tra quantita di giochi usati o nuovi
+	//aggiunge un numero di copie pari alla quantità indicata a un gioco scegliendo tra le categorie usati o nuovi
 	public void aggiungiquantitagiochi(String nome, boolean nuovo, int quantita) {
 		for (int i = 0; i < g.size(); i++) {
 			if (g.get(i).getNome().equals(nome)) {			//cerco tra i giochi quello col nome uguale	
@@ -95,7 +96,7 @@ public class ManagerModel {
 	
 	
 	
-	
+	//Metodo per gli ordini di nuovi giochi al magazzino
 	public void ordinaprodotto(String nome, int quantita) {
 		Finto_gestore_magazino fm = new Finto_gestore_magazino();
 		fm.InviaRichiestaGiochiPerFinta(nome, quantita);

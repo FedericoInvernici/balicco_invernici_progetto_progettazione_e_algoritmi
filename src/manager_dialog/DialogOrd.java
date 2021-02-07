@@ -10,13 +10,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JTextField;
-
-import manager_filiare.ManagerModel;
-
 import javax.swing.JSpinner;
 import javax.swing.JButton;
 import javax.swing.JTextPane;
 import javax.swing.SpinnerNumberModel;
+
+import manager_filiale.ManagerModel;
 
 public class DialogOrd {
 

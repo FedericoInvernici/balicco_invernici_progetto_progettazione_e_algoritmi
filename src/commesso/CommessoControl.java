@@ -67,16 +67,19 @@ public class CommessoControl {
         }
 	}
 	
-	//restituisce il prezzo del gioco col nome nel campo text
+	//imposta il campo testuale con il prezzo del gioco inserito (sia nuovo che usato)
 	class prezzo implements ActionListener {
         public void actionPerformed(ActionEvent e) {
         	String s;
         	double dn,du;
         	s = cview.getNomegiocoText();
-        	dn=cmodel.trovaprezzo(s, true);
+        	dn=cmodel.trovaprezzo(s, true); 
         	du=cmodel.trovaprezzo(s, false);
-        	s=s+"p_nuovo: " + dn + " p_usato: " + du;
-        	cview.setNomegiocoText(s);;
+        	if(dn==0.0 && du==0.0) cview.setNomegiocoText("Gioco non trovato nel database");
+        	else {
+        		s=s+": p_nuovo: " + dn + " p_usato: " + du;
+        		cview.setNomegiocoText(s);
+        	}
         }
 	}
 	

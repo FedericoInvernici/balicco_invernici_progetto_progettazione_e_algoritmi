@@ -1,6 +1,0 @@
-Lista delle cose da fare (scriviamo a fianco chi lo sta facendo almeno non ci sovrapponiamo)
-
-Da fare (o controllare che siano presenti):
-- Verificare se è possibile ordinare i dati solo una volta (Ovvero quando si chiude l'applicazione del manager). Per migliorare le prestazioni.
-
-- Fare test di unità (alla fine del progetto)

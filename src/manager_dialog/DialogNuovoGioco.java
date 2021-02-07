@@ -14,7 +14,7 @@ import javax.swing.JTextField;
 
 import org.w3c.dom.events.EventException;
 
-import manager_filiare.ManagerModel;
+import manager_filiale.ManagerModel;
 
 
 //creo jdialog per il metodo nuovogioco
