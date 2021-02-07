@@ -1,4 +1,4 @@
-package manager_filiare;
+package manager_filiale;
 
 import java.util.Date;
 

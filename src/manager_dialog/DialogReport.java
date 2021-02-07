@@ -15,7 +15,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import commesso.CommessoModel;
-import manager_filiare.ManagerModel;
+import manager_filiale.ManagerModel;
 
 public class DialogReport
 { 

@@ -24,33 +24,27 @@ public class CommessoModel {
 		letturaDaFileIscritti();
 	}
 	
+	/*
+	 * metodo che riceve in ingresso una stringa (rappresentante il nome del gioco) e un booleano (a true se il gioco 
+	 * da cercare è nuovo, a false se è usato).
+	 * Il gioco verrà cercato nel database, se non è presente verrà restituito 0.
+	 */
 	public double trovaprezzo(String nome, boolean nuovo){
-		for (int i = 0; i < g.size(); i++) {
-			if (g.get(i).getNome().equals(nome)) {			//cerco tra i giochi quello col nome uguale
-				if (nuovo) {					//e quando lo trova gli sostituisce il prezzo
-					return g.get(i).getPrezzo_nuovo();		//e quando lo trova gli sostituisce il prezzo
-				}else {
-					return g.get(i).getPrezzo_usato();	//distinguendo tra nuovo e usato 
-				}
-			}
-		}
-		return 0;		//in caso non lo trovi
+		int indice = RicercaInterpolata.TrovaElementoComp(g, new Giochi(nome, 0, 0, 0));
+		if(indice==-1) return 0;
+		else if(nuovo) return g.get(indice).getPrezzo_nuovo();
+		else return g.get(indice).getPrezzo_usato();
 	}
 	
 	
 	
 	//metodo per il ritiro usato, che aumenta la quantita e restituisce il prezzo di un gioco
 	public double ritirousato(String nome){
-		double prezzo = 0;
-		Giochi gtemp;
-		for (int i = 0; i < g.size(); i++) {		//cerco tra i giochi quello col nome uguale
-			if (g.get(i).getNome().equals(nome)) {			 
-				gtemp = g.get(i);							
-				prezzo = gtemp.getPrezzo_usato();
-				gtemp.quantitaUsatopiupiu();
-				g.set(i, gtemp);
-			}
-		} 
+		double prezzo = 0.0;
+		int indice = RicercaInterpolata.TrovaElementoComp(g, new Giochi(nome, 0, 0, 0));
+		if(indice!=-1) {
+			g.get(indice).quantitaUsatopiupiu();
+		}
 		scritturaSuFileGiochi();
 		return prezzo;		//in caso non lo trovi ritornera prezzo=0
 	}
@@ -119,6 +113,9 @@ public class CommessoModel {
 		return 0;
 	}
 	
+	/* Riceve come parametri il nome del gioco e la sua condizione (nuovo= true se il gioco è nuovo, altrimenti false per gli usati).
+	 * Verifica la disponibilità del gioco indicato, restituendo true se è presente almeno un gioco disponibile in negozio
+	 */
 	public boolean verificaDisponibilita(String nome, boolean nuovo) {
 		int indice = RicercaInterpolata.TrovaElementoComp(g, new Giochi(nome, 0, 0, 0));
 		if(indice<0) return false;
@@ -129,7 +126,9 @@ public class CommessoModel {
 		}
 	}
 	
-	
+	/*
+	 * Metodo per l'iscrizione alla newsletter
+	 */
 	public void iscrivi(String nome, String cognome, String email) {
 		iscr.add(new Iscritto(nome, cognome, email));
 		scritturaSuFileIscritti();
@@ -188,5 +187,4 @@ public class CommessoModel {
 		GestoreJson js = new GestoreJson();
 		iscr = (ArrayList<Iscritto>) js.letturaDaFileJSON("FileIscritti.json");
 	}
-	
 }
